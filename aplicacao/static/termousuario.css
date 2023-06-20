@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  color: #7c0a02;
+  }
+
+body {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  background: -webkit-linear-gradient(left, #7c0a02, #7c0a02, #9b111e, #c50532);
+  place-items: center;
+}
+
+h1,h3 {
+  text-align: center;
+}
+
+.wrapper1 {
+  margin: auto;
+  margin-top: 5px;
+  overflow: hidden;
+  max-width: 850px;
+  max-height: inherit;
+  background: -webkit-linear-gradient(left, #fff5bd, #fff5bd, #fffdd3,#fffdd3);
+  padding: 25px;
+  border-radius: 50px;
+  border-color: #fff;
+  box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
+  place-items: inherit;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.wrapper2 {
+  margin: auto;
+  margin-top: 25px;
+  overflow: hidden;
+  max-width: 850px;
+  max-height: inherit;
+  background:  #ffffffc4;
+  padding: 50px;
+  border-radius: 50px;
+  border-color: #fff;
+  box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
+  place-items: inherit;
+  justify-content: space-between;
+  align-items: center;
+}
+
+input[type="submit"] {
+  height: 50%;
+  width: 50%;
+  position: relative;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  background: -webkit-linear-gradient(left, #7c0a02, #7c0a02, #9b111e, #c50532);
+  padding: 10px 20px;
+  border: none;
+  transition: all 0.5s ease;
+ }
+
+ input[type="submit"]:hover {
+  background: -webkit-linear-gradient(right, #7c0a02, #7c0a02, #9b111e, #c50532);
+  
+}
+
+form.signup {
+  text-align: center;
+}
+ 
+ 

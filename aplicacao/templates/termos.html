@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}" />
+    <title>Termos de Uso</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+          display: grid;
+          height: 100%;
+          width: 100%;
+          place-items: center;
+          background: -webkit-linear-gradient(left, #fff5bd, #fff5bd, #fffdd3, #fffdd3);
+        }
+
+        ::selection {
+          background: #fff5bd;
+          color: #fff5bd;
+        }
+
+        .wrappers {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+
+        }
+
+        .wrapper1,
+        .wrapper2 {
+
+          margin-top: 20%;
+          overflow: hidden;
+          max-width: 390px;
+          background: -webkit-linear-gradient(left, #7c0a02, #7c0a02, #9b111e, #c50532);
+          padding: 30px;
+          border-radius: 35px;
+          border-color: #fff;
+          border-style: solid;
+          box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+          align-self: center;
+
+        }
+
+        .title-text1,
+        .title-text2 {
+          display: flex;
+          justify-content: center;
+        }
+
+        .title,
+        .slide {
+          font-size: 35px;
+          font-weight: 600;
+          text-align: center;
+          transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+          color: #fff;
+        }
+
+        .slide-controls1,
+        .slide-controls2 {
+          display: flex;
+          height: 50px;
+          width: 100%;
+          overflow: hidden;
+          margin: 30px 0 10px 0;
+          justify-content: space-between;
+          border: 1px solid #fff5bd;
+          border-radius: 15px;
+        }
+
+        .slide {
+          flex: 1;
+          height: 100%;
+          width: 100%;
+          color: #fcf8c8;
+          font-size: 18px;
+          font-weight: 500;
+          text-align: center;
+          line-height: 48px;
+          z-index: 1;
+        }
+
+        input[type="radio"] {
+          display: none;
+        }
+
+        form .btn {
+          height: 50px;
+          width: 100%;
+          border-radius: 15px;
+          position: relative;
+          overflow: hidden;
+        }
+
+        form .btn .btn-layer1,
+        form .btn .btn-layer2 {
+          height: 100%;
+          width: 300%;
+          position: absolute;
+          left: -100%;
+          background: -webkit-linear-gradient(right, #7c0a02, #7c0a02, #9b111e, #c50532);
+          border-radius: 15px;
+          transition: all 0.5s ease;
+        }
+
+        form .btn:hover .btn-layer1,
+        form .btn:hover .btn-layer2 {
+          left: 0;
+        }
+
+        form .btn input[type="submit"] {
+          height: 100%;
+          width: 100%;
+          z-index: 1;
+          position: relative;
+          background: none;
+          border: none;
+          color: #fff;
+          padding-left: 0;
+          border-radius: 15px;
+          font-size: 20px;
+          font-weight: 500;
+          cursor: pointer;
+        }
+
+        @media screen and (max-width: 480px) {
+          .wrapper1,
+          .wrapper2 {
+            max-width: 100%;
+            padding: 20px;
+            border-radius: 0;
+          }
+        }
+
+        @media screen and (min-width: 481px) and (max-width: 1024px) {
+          .wrapper1,
+          .wrapper2 {
+            max-width: 45%;
+          }
+        }
+
+        @media screen and (min-width: 1025px) {
+          .wrapper1,
+          .wrapper2 {
+            max-width: 30%;
+          }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrappers">
+        <div class="wrapper1" >
+            <div class="title-text1">
+                <div class="title login1">Termos para Doador</div>
+            </div>
+
+            <div class="form-container1">
+                <div class="slide-controls1">
+                    <input type="radio" name="slide" id="login1" checked>
+                    <label for="login1" class="slide login1">☟ Clique no Botão Abaixo ☟</label>
+                </div>
+            </div>
+
+            <form action="../termo_doador" target="_blank" class="signup">
+                <div class="field btn">
+                    <div class="btn-layer1"></div>
+                    <input type="submit" value="Termos">
+                </div>
+            </form>
+        </div>
+
+        <div class="wrapper1">
+            <div class="title-text2">
+                <div class="title login2">Termos  Centro Médico</div>
+            </div>
+
+            <div class="form-container2">
+                <div class="slide-controls2">
+                    <input type="radio" name="slide" id="login2" checked>
+                    <label for="login2" class="slide login2">☟ Clique no Botão Abaixo ☟</label>
+                </div>
+            </div>
+
+
+            <form action="../termo_centro" target="_blank" class="signup">
+                <div class="field btn">
+                    <div class="btn-layer2"></div>
+                    <input type="submit" value="Termos">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

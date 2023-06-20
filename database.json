@@ -1,0 +1,12 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Assinatura",
+      "description": "Mensal",
+      "price": 24.99,
+      "quantity": 1,
+      "image": ""
+    }
+  ]
+}

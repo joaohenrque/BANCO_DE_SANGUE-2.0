@@ -1,0 +1,73 @@
+{% extends 'baselogada.html' %}
+
+    {% block body %}
+<html>
+  <head>
+    <title>Gerenciador de Produtos</title>
+    <style>
+
+        @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+      *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+      }
+
+      body {
+        background-color: #f5f5f5;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  p {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 20px;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+
+  li {
+    display: inline-block;
+    margin: 10px;
+  }
+
+  a {
+    display: block;
+    background-color: #337ab7;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+  }
+
+  a:hover {
+    background-color: #23527c;
+  }
+</style>
+  </head>
+<h1>Gerenciar Estoque</h1>
+<ul>
+  <li><a href="{{ url_for('cadastro_doacao') }}">Cadastro de Estoque</a></li>
+  <li><a href="{{ url_for('remocao') }}">Remoção de Estoque</a></li>
+  <li><a href="{{ url_for('adicionar') }}">Adicionar Quantidade</a></li>
+  <li><a href="{{ url_for('subtrair') }}">Subtrair Quantidade</a></li>
+  <li><a href="{{ url_for('atualizacao') }}">Atualização de Quantidade</a></li>
+  <li><a href="{{ url_for('listarP') }}">Lista de Produtos</a></li>
+</ul>
+
+</html>
+{% endblock %}

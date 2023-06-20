@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: -webkit-linear-gradient(left, #fff5bd, #fff5bd, #fffdd3, #fffdd3);
+  font-size: 14px;
+  text-align: center;
+  padding: 1px;
+}
+
+h1 {
+  font-size: 2.8rem;
+  margin: 0 0 1.5em;
+  font-weight: bolder;
+  text-align: center;
+  padding: 1px;
+  background: -webkit-linear-gradient(right, #7c0a02, #9b111e, #9b111e, #ff2744);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.post-its {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 0.9fr));
+  grid-gap: 35px;
+  grid-row-gap: 25px;
+  grid-auto-rows: 350px;
+  grid-auto-flow: row dense;
+}
+.post-it {
+  background: #fff;
+  opacity: 0.9;
+  cursor: pointer;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 0 1.5em;
+  padding: 1px;
+  position: relative; /* Adicionado */
+  overflow: hidden; /* Adicionado */
+}
+.post-it:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(to right, #7c0a02, #9b111e, #9b111e, #ff2744);
+  opacity: 0.5;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.post-it:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(to right, #7c0a02, #9b111e, #9b111e, #ff2744);
+  opacity: 0.2;
+  z-index: -2;
+  pointer-events: none;
+  animation: pulse 3s infinite;
+}
+
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.2;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.2;
+  }
+}
+
+
+.nomear {
+  background: #000;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.post-it p {
+  padding: 10px;
+}
+
+.delete-button {
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.delete-button:hover {
+  background-color: #cc0000;
+}
+
+textarea {
+  width: 100%;
+  height: 150px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+}

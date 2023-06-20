@@ -1,0 +1,11 @@
+{% extends 'baselogada.html' %}
+
+    {% block body %}
+
+    <h1>Exclusão de usuário</h1>
+    <p>Tem certeza que deseja excluir o usuário {{ usuario.usuario }}?</p>
+    <form action="{{ url_for('deletar_usuario', id=usuario.id) }}" method="POST">
+        <button type="submit" class="btn btn-danger">Confirmar exclusão</button>
+        <a href="{{ url_for('listar_usuarios') }}" class="btn btn-secondary">Cancelar</a>
+    </form>
+{% endblock %}

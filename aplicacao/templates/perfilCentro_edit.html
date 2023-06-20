@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Editar Perfil do Centro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='perfilCentro_edit.css') }}">
+  <script src="{{ url_for('static', filename='perfilCentro_edit.js') }}"></script>
+</head>
+<body>
+  <h1>Editar Perfil do Centro</h1>
+  <form id="perfilForm" method="POST" action="{{ url_for('editarPerfilCentro') }}" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+
+    <div class="circle" id="fotoCircle">
+      <span style="text-align: center;">Clique para inserir sua foto</span>
+    </div>
+    <input type="file" id="fotoInput" name="foto" style="display: none;">
+
+    {{ form.instituicao.label }} {{ form.instituicao }}
+    <br><br>
+
+    {{ form.taxas.label }} {{ form.taxas }}
+    <br><br>
+
+    {{ form.telefones.label }} {{ form.telefones }}
+    <br><br>
+
+    {{ form.email.label }} {{ form.email }}
+    <br><br>
+
+    {{ form.cep.label }} {{ form.cep }}
+    <br><br>
+
+    {{ form.logradouro.label }} {{ form.logradouro }}
+    <br><br>
+
+    {{ form.bairro.label }} {{ form.bairro }}
+    <br><br>
+
+    {{ form.cidade.label }} {{ form.cidade }}
+    <br><br>
+
+    {{ form.estado.label }} {{ form.estado }}
+    <br><br>
+
+    {{ form.cnpj.label }} {{ form.cnpj }}
+    <br><br>
+
+    {{ form.submit }}
+  </form>
+
+
+</body>
+</html>

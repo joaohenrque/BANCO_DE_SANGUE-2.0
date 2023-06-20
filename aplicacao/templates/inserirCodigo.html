@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Inserir Código</title>
+</head>
+<body>
+  <h1>Inserir Código</h1>
+  <form method="POST">
+    {{ form.csrf_token }}
+    {{ form.codigo.label }} {{ form.codigo }}
+    {{ form.submit }}
+  </form>
+</body>
+</html>
+

@@ -1,0 +1,76 @@
+
+
+<link rel="stylesheet" href="{{ url_for('static', filename='cadastro.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='cadastro.js') }}">
+
+<div class="flash-messages">
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        <div class="flash-message {{ message[1] }}">
+          {{ message[0] }}
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+</div>
+
+
+<!-- Resto do seu código HTML -->
+
+
+<div class="wrapper">
+  <div class="title-text">
+    <div class="title login">Cadastro</div>
+    <div class="title signup">Cadastro</div>
+  </div>
+  <div class="form-container">
+    <div class="slide-controls">
+      <input type="radio" name="slide" id="login" checked>
+      <input type="radio" name="slide" id="signup">
+      <label for="login" class="slide login{% if current_page == 'doador' %} active{% endif %}">Doador</label>
+      <label for="signup" class="slide signup{% if current_page == 'centro' %} active{% endif %}">Centro Médico</label>
+      <div class="slider-tab"></div>
+    </div>
+    <div class="form-inner">
+      <form class="login" id="form-doador" method="POST" action="{{ url_for('cadastrar_usuario') }}">
+        {{ form.csrf_token }}
+        <div class="field">
+          {{ form.usuario(class="form-control", placeholder="Nome", id="usuario") }}
+        </div>
+        <div class="field">
+          {{ form.email(class="form-control", placeholder="E-mail", id="email") }}
+        </div>
+        <div class="field">
+          {{ form.senha(class="form-control", placeholder="Senha", id="senha") }}
+        </div>
+        <div class="field">
+          {{ form.confirmacao(class="form-control", placeholder="Confirmação de Senha", id="confirmacao") }}
+        </div>
+        <div class="field btn">
+          <div class="btn-layer"></div>
+          {{ form.submit_criar(class="btn btn-primary btn-block mb-4") }}
+        </div>
+        <div class="signup-link">Já se cadastrou? <a href= '{{ url_for("loginDoador") }}'>Faça Login!</a></div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  const loginRadio = document.getElementById('login');
+  const signupRadio = document.getElementById('signup');
+  const currentPath = window.location.pathname;
+
+  if (currentPath.includes('doador')) {
+    loginRadio.checked = true;
+  } else if (currentPath.includes('centro')) {
+    signupRadio.checked = true;
+  }
+
+  signupRadio.addEventListener('change', function() {
+    window.location.href = '{{ url_for("cadastrar_centro") }}'; // Redireciona para a rota "cadastrar_centro"
+  });
+</script>
+
+

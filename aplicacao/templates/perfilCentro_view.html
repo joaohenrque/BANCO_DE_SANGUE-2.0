@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Perfil do Centro - Visualização</title>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='perfilCentro.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='perfilCentro_view.css') }}">
+
+
+</head>
+<body>
+  <h1>Perfil do Centro - Visualização</h1>
+  <div class="profile-container">
+    <div class="profile-image">
+      <img id="profileImage" src="{{ url_for('static', filename='UPLOAD_FOLDER/' + perfil.foto) }}" alt="Foto">
+    </div>
+    <div class="profile-details">
+      <p><strong>Instituição:</strong> {{ perfil.instituicao }}</p>
+      <p><strong>Valor taxas:</strong> {{ perfil.taxas }}</p>
+      <p><strong>Telefones:</strong> {{ perfil.telefones }}</p>
+      <p><strong>Email:</strong> {{ perfil.email }}</p>
+      <p><strong>CEP:</strong> {{ perfil.cep }}</p>
+      <p><strong>Logradouro:</strong> {{ perfil.logradouro }}</p>
+      <p><strong>Bairro:</strong> {{ perfil.bairro }}</p>
+      <p><strong>Cidade:</strong> {{ perfil.cidade }}</p>
+      <p><strong>Estado:</strong> {{ perfil.estado }}</p>
+      <p><strong>CNPJ:</strong> {{ perfil.cnpj }}</p>
+    </div>
+  </div>
+  <div class="edit-link">
+    <a href="{{ url_for('editarPerfilCentro') }}"><img src="{{ url_for('static', filename='ferramenta-lapis.png') }}" alt="Editar"></a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,229 @@
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}" />
+
+    <h1>Post-its</h1>
+    <form method="POST" action="{{ url_for('postits') }}">
+        <textarea name="conteudo" placeholder="Digite seu post-it"></textarea>
+
+        <button type="submit">Postar</button>
+    </form>
+    <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+
+    <!-- Custom CSS -->
+    <link rel="shortcut icon" type="image/png" href="../favicon.png" />
+    <link rel="stylesheet" href="postits.css">
+
+  <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+
+    <title>Mural</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+        *{
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: 'Poppins', sans-serif;
+         }
+
+        body {
+            background: -webkit-linear-gradient(left, #fff5bd, #fff5bd, #fffdd3,#fffdd3);
+            font-size: 16px;
+            text-align: center;
+            padding: 1px;
+        }
+
+        h1 {
+            font-size: 3.2rem;
+            margin: 25px;
+            font-weight: bolder;
+            text-align: center;
+            padding: 15px;
+            background: -webkit-linear-gradient(right, #7c0a02, #9b111e, #9b111e, #ff2744);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .post-its {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-gap: 35px;
+            grid-row-gap: 25px;
+            grid-auto-rows: 350px;
+            grid-auto-flow: row dense;
+            justify-content: center;
+        }
+
+        .post-it {
+            background: #fff;
+            opacity: 0.9;
+            cursor: pointer;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12), 0px 2px 10px rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin: 0 0 1.5em;
+            padding: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .post-it:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: linear-gradient(to right, #7c0a02, #9b111e, #9b111e, #ff2744);
+            opacity: 0.5;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .post-it:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: linear-gradient(to right, #7c0a02, #9b111e, #9b111e, #ff2744);
+            opacity: 0.2;
+            z-index: -2;
+            pointer-events: none;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.4;
+            }
+             50% {
+                transform: scale(1.03);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0.4;
+            }
+        }
+
+        .nomear {
+            color: #fff; /* Cor do texto */
+            text-shadow: -1px -1px 0 #000,
+                          1px -1px 0 #000,
+                         -1px  1px 0 #000,
+                          1px  1px 0 #000;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .post-it-content {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .post-it p {
+            font-size: 1.2rem;
+        }
+
+        .delete-button {
+            background: -webkit-linear-gradient(left, #7c0a02,  #7c0a02, #9b111e, #c50532);
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .delete-button:hover {
+            background: -webkit-linear-gradient(right, #7c0a02,  #7c0a02, #9b111e, #c50532);
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #7c0a02;
+            margin-bottom: 10px;
+        }
+
+        button[type="submit"] {
+            background: -webkit-linear-gradient(left, #7c0a02,  #7c0a02, #9b111e, #c50532);
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 2.5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background: -webkit-linear-gradient(left, #7c0a02,  #7c0a02, #9b111e, #c50532);
+        }
+
+        .post-it-image {
+            position: absolute;
+            top: 10;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Responsividade */
+        @media only screen and (max-width: 600px) {
+            .post-its {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            var postIts = document.getElementsByClassName("post-it");
+            for (var i = 0; i < postIts.length; i++) {
+                postIts[i].addEventListener("mouseover", function() {
+                    this.style.transform = "scale(1.03)";
+                    this.style.transition = "transform 0.3s";
+                });
+                postIts[i].addEventListener("mouseout", function() {
+                    this.style.transform = "scale(1)";
+                });
+            }
+        };
+    </script>
+</head>
+<body>
+    <h1>Mural</h1>
+    <div class="post-its">
+        {% for postit in postits %}
+        <div class="post-it">
+            <div class="nomear">
+                <h2>{{ postit.usuario.usuario }}</h2>
+                    <p>{{ postit.usuario.email }}</p>
+            </div>
+            <div class="post-it-content">
+                <img src="https://ambulatoriodagloria.com.br/img/doacoes.png" class="post-it-image" alt="Sobreposição de Imagem">
+                <p>{{ postit.conteudo }}</p>
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

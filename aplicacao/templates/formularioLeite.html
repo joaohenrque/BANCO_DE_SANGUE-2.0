@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='formulario.css') }}" />
+
+</head>
+<body>
+ <form action="/salvar_formulario3" method="POST">
+    <div class="tile is-parent">
+        <div class="tile is-child box">
+       <p class="title">1. Foi submetido a transplante de órgãos ou de medula?
+        *
+        Se sim: Impedimento Definitivo</p>
+
+
+<div class="control">
+        <label class="radio">
+          <input type="radio" name="pergunta1" value="Sim"> Sim
+        </label>
+        <label class="radio">
+          <input type="radio" name="pergunta1" value="Não"> Não
+        </label>
+        </div>
+        <p class="observacao">Observação: Se você foi submetido a transplante de órgãos ou de medula, é considerado um impedimento definitivo para a doação de sangue.</p>
+    </div>
+    </div>
+
+    <div class="tile is-parent">
+        <div class="tile is-child box">
+       <p class="title">2. Apresenta diabetes com complicações vasculares? faz uso de insulina?
+        *
+        Se sim: Impedimento Definitivo</p>
+
+
+<div class="control">
+        <label class="radio">
+          <input type="radio" name="pergunta2" value="Sim"> Sim
+        </label>
+        <label class="radio">
+          <input type="radio" name="pergunta2" value="Não"> Não
+        </label>
+        </div>
+        <p class="observacao">Observação: Se você apresenta diabetes com complicações vasculares ou faz uso de insulina, é considerado um impedimento definitivo para a doação de sangue.</p>
+    </div>
+    </div>
+
+    <div class="tile is-parent">
+        <div class="tile is-child box">
+       <p class="title">3. Recebeu enxerto de duramater?
+        *
+        Se sim: Impedimento Definitivo</p>
+
+
+<div class="control">
+        <label class="radio">
+          <input type="radio" name="pergunta3" value="Sim"> Sim
+        </label>
+        <label class="radio">
+          <input type="radio" name="pergunta3" value="Não"> Não
+        </label>
+        </div>
+        <p class="observacao">Observação: Se você recebeu enxerto de duramater, é considerado um impedimento definitivo para a doação de sangue.</p>
+    </div>
+    </div>
+
+    <div class="tile is-parent">
+        <div class="tile is-child box">
+       <p class="title">4. Já teve algum desses quadros?
+        *
+        Elefantíase.
+        Hanseníase.
+        Calazar (leishmaniose visceral).
+        Leishmaniose tegumentar ou cutânea.
+        Brucelose.
+        Esquistossomose hepatoesplênica.
+        Malária.
+        Algum tipo de câncer, incluindo leucemia.
+        Hepatite após os 11 anos de idade.
+        Tuberculose extra-pulmonar.
+        Doença de Chagas.
+        Se sim: Impedimento Definitivo</p>
+
+
+<div class="control">
+        <label class="radio">
+          <input type="radio" name="pergunta4" value="Sim"> Sim
+        </label>
+        <label class="radio">
+          <input type="radio" name="pergunta4" value="Não"> Não
+        </label>
+        </div>
+        <p class="observacao">Observação: Se você teve algum desses quadros mencionados, é considerado um impedimento definitivo para a doação de sangue.</p>
+    </div>
+    </div>
+
+    <div class="tile is-parent">
+        <div class="tile is-child box">
+       <p class="title">5. Apresenta atualmente algum desses quadros?
+        *
+        HIV Positivo
+        Doença de Chagas.
+
+        » tem graves problemas no pulmão, coração, rins ou fígado.
+
+        » tem problema de coagulação de sangue.
+
+        » tem alguma doença que gere inimputabilidade jurídica.
+
+        » tem Mal de Parkinson.
+        Se sim: Impedimento Definitivo</p>
+
+
+<div class="control">
+        <label class="radio">
+          <input type="radio" name="pergunta5" value="Sim"> Sim
+        </label>
+        <label class="radio">
+          <input type="radio" name="pergunta5" value="Não"> Não
+        </label>
+        </div>
+        <p class="observacao">Observação: Se você apresenta algum desses quadros mencionados ou condições específicas, é considerado um impedimento definitivo para a doação de sangue.</p>
+    </div>
+    </div>
+
+    <div class="tile is-parent">
+        <div class="tile is-child box">
+       <p class="title">6. Teve hepatite após os 11 anos de idade?
+        *
+        Hepatite após o 11º aniversário:  Impedimento Definitivo
+        Hepatite B ou C após ou antes dos 10 anos:  Impedimento Definitivo
+        Se teve Hepatite por Medicamento pode estar apto após a cura completa e
+        após liberação médica através de avaliação clínica comprovada.</p>
+
+
+<div class="control">
+        <label class="radio">
+          <input type="radio" name="pergunta6" value="Sim"> Sim
+        </label>
+        <label class="radio">
+          <input type="radio" name="pergunta6" value="Não"> Não
+        </label>
+        </div>
+        <p class="observacao">Observação: Se você teve hepatite após os 11 anos de idade, ou hepatite B ou C após ou antes dos 10 anos, é considerado um impedimento definitivo para a doação de sangue. No entanto, se teve hepatite por medicamento e está curado, pode ser elegível após avaliação médica.</p>
+    </div>
+    </div>
+
+    <div class="tile is-parent">
+    <div class="tile is-child box">
+        <p class="title">7. Tem ou teve alguma doença transmissível por sangue?
+            *
+            Hepatites B e C,
+            AIDS (vírus HIV),
+            Doenças associadas aos vírus HTLV I e II
+            Doença de Chagas.
+            Impedimento Definitivo</p>
+
+
+<div class="control">
+<label class="radio">
+<input type="radio" name="pergunta7" value="Sim"> Sim
+</label>
+<label class="radio">
+<input type="radio" name="pergunta7" value="Não"> Não
+</label>
+</div>
+<p class="observacao">Observação: Se você tem ou teve alguma doença transmissível pelo sangue, como hepatites B e C, AIDS, doenças associadas aos vírus HTLV I e II ou doença de Chagas, é considerado um impedimento definitivo para a doação de sangue.</p>
+</div>
+</div>
+
+<div class="tile is-parent">
+    <div class="tile is-child box">
+   <p class="title">8. Fez ou faz uso de drogas ilícitas injetáveis?
+    *
+    Impedimento Definitivo</p>
+
+
+<div class="control">
+    <label class="radio">
+      <input type="radio" name="pergunta8" value="Sim"> Sim
+    </label>
+    <label class="radio">
+      <input type="radio" name="pergunta8" value="Não"> Não
+    </label>
+</div>
+<p class="observacao">Observação: Se você fez ou faz uso de drogas ilícitas injetáveis, é considerado um impedimento definitivo para a doação de sangue.</p>
+</div>
+</div>
+
+<div class="tile is-parent">
+    <div class="tile is-child box">
+   <p class="title">9. Tem ou teve Malária?
+    *
+    Impedimento Definitivo</p>
+
+
+<div class="control">
+    <label class="radio">
+      <input type="radio" name="pergunta9" value="Sim"> Sim
+    </label>
+    <label class="radio">
+      <input type="radio" name="pergunta9" value="Não"> Não
+    </label>
+</div>
+<p class="observacao">Observação: Se você tem ou teve malária, é considerado um impedimento definitivo para a doação de sangue.</p>
+</div>
+</div>
+
+<div class="tile is-parent">
+    <div class="tile is-child box">
+   <p class="title">10. Tem ou teve Doença de Parkinson?
+    *
+    Impedimento Definitivo</p>
+
+
+<div class="control">
+    <label class="radio">
+      <input type="radio" name="pergunta10" value="Sim"> Sim
+    </label>
+    <label class="radio">
+      <input type="radio" name="pergunta10" value="Não"> Não
+    </label>
+</div>
+<p class="observacao">Observação: Se você tem ou teve doença de Parkinson, é considerado um impedimento definitivo para a doação de sangue.</p>
+</div>
+</div>
+             <button type="submit">Enviar</button>
+
+         </form>
+
+
+<p>Referências do Questionário:</p>
+<link rel="stylesheet"
+href="https://www.prosangue.sp.gov.br/artigos/requisitos_basicos_para_doacao.html">
+<link rel="stylesheet" href="https://www.prosangue.sp.gov.br/artigos/quem_nao_pode_doar.html">
+
+</body>
+</html>

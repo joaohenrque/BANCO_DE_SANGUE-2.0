@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Formulário de Perfil de Doador</title>
+    {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class="flash-messages">
+      {% for message in messages %}
+        <div class="flash-message">{{ message }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+    <style>
+     @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+    .line{
+        font-family: 'Poppins', sans-serif;
+    }
+</style>
+  <link rel="stylesheet" href="{{ url_for('static', filename='perfilDoador.css') }}">
+
+</head>
+<body>
+  <h1>Formulário de Perfil de Doador</h1>
+  <form id="perfilForm" method="POST" action="{{ url_for('perfilDoador') }}" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+
+    <div class="circle-container">
+      <div class="circle" id="fotoCircle">
+        Insira aqui sua foto
+      </div>
+    </div>
+    <input type="file" id="fotoInput" name="foto" style="display: none;">
+
+    <div class="line"></div>
+
+    {{ form.nome.label }} {{ form.nome }}
+    <br><br>
+
+    {{ form.genero.label }} {{ form.genero }}
+    <br><br>
+
+
+    {{ form.tipo_sanguineo.label }} {{ form.tipo_sanguineo }}
+    <br><br>
+
+    {{ form.doa_sangue.label }} {{ form.doa_sangue }}
+    <br>
+    {{ form.doa_medula.label }} {{ form.doa_medula }}
+    <br>
+    {{ form.doa_leite_materno.label }} {{ form.doa_leite_materno }}
+    <br><br>
+    {{ form.email.label }} {{ form.email }}
+<br><br>
+
+
+    {{ form.cep.label }} {{ form.cep }}
+    <br><br>
+
+    {{ form.logradouro.label }} {{ form.logradouro }}
+    <br><br>
+
+    {{ form.bairro.label }} {{ form.bairro }}
+    <br><br>
+
+    {{ form.cidade.label }} {{ form.cidade }}
+    <br><br>
+
+    {{ form.estado.label }} {{ form.estado }}
+    <br><br>
+
+    {{ form.cpf.label }} {{ form.cpf }}
+    <br><br>
+
+    {{ form.data_nascimento.label }} {{ form.data_nascimento }}
+    <br><br>
+
+    {{ form.submit }}
+  </form>
+
+  <script>
+    document.getElementById("fotoCircle").addEventListener("click", function() {
+      document.getElementById("fotoInput").click();
+    });
+
+    document.getElementById("fotoInput").addEventListener("change", function() {
+      var file = this.files[0];
+      var reader = new FileReader();
+
+      reader.onload = function(e) {
+        document.getElementById("fotoCircle").style.backgroundImage = "url(" + e.target.result + ")";
+        document.getElementById("fotoCircle").innerText = "";
+      };
+
+      reader.readAsDataURL(file);
+    });
+  </script>
+</body>
+</html>

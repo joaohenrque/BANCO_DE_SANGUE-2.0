@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Formulário de Perfil de Centro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='perfilCentro.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static', filename='perfilCentro.js') }}">
+
+
+</head>
+<body>
+  <h1>Formulário de Perfil de Centro</h1>
+  <form id="perfilForm" method="POST" action="{{ url_for('perfilCentro') }}" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+
+    <div class="circle-container">
+
+      <div class="circle" id="fotoCircle"></div>
+
+    </div>
+    <input type="file" id="fotoInput" name="foto" style="display: none;">
+
+    <div class="line"></div>
+
+    {{ form.instituicao.label }} {{ form.instituicao }}
+    <br><br>
+
+    {{ form.taxas.label }} {{ form.taxas }}
+    <br><br>
+
+    {{ form.telefones.label }} {{ form.telefones }}
+    <br><br>
+
+    {{ form.email.label }} {{ form.email }}
+    <br><br>
+
+    {{ form.cep.label }} {{ form.cep }}
+    <br><br>
+
+    {{ form.logradouro.label }} {{ form.logradouro }}
+    <br><br>
+
+    {{ form.bairro.label }} {{ form.bairro }}
+    <br><br>
+
+    {{ form.cidade.label }} {{ form.cidade }}
+    <br><br>
+
+    {{ form.estado.label }} {{ form.estado }}
+    <br><br>
+
+    {{ form.cnpj.label }} {{ form.cnpj }}
+    <br><br>
+
+    <div class="line"></div>
+
+    {{ form.submit }}
+  </form>
+<script>
+    document.getElementById("fotoCircle").addEventListener("click", function() {
+      document.getElementById("fotoInput").click();
+    });
+
+    document.getElementById("fotoInput").addEventListener("change", function() {
+      var file = this.files[0];
+      var reader = new FileReader();
+
+      reader.onload = function(e) {
+        document.getElementById("fotoCircle").style.backgroundImage = "url(" + e.target.result + ")";
+        document.getElementById("fotoCircle").innerText = "";
+      };
+
+      reader.readAsDataURL(file);
+    });
+  </script>
+</body>
+</html>

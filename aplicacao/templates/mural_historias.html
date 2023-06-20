@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mural de Histórias</title>
+    <style>
+        /* Estilos CSS */
+
+            @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .carousel {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .carousel ul {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel li {
+            width: 100%;
+            height: 100%;
+            float: left;
+        }
+
+        .message {
+            background-color: #f2f2f2;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mural de Histórias</h1>
+        <h2>Instituição: <span id="instituicao"></span></h2>
+
+        <div class="carousel">
+            <ul id="messages-carousel"></ul>
+        </div>
+
+        <form id="message-form">
+            {{ form.hidden_tag() }}
+            {{ form.message.label }} {{ form.message(size=20) }}
+            {{ form.submit() }}
+        </form>
+    </div>
+
+    <script>
+        // JavaScript
+        const messagesCarousel = document.getElementById('messages-carousel');
+        const messageForm = document.getElementById('message-form');
+        const messageContent = document.getElementById('{{ form.message.id }}');
+        const instituicao = document.getElementById('instituicao');
+
+        // Função para adicionar uma mensagem ao carrossel
+        function addMessageToCarousel(message) {
+            const li = document.createElement('li');
+            li.innerHTML = `<div class="message">${message}</div>`;
+            messagesCarousel.appendChild(li);
+        }
+
+        // Função para atualizar o nome da instituição
+        function updateInstituicao(name) {
+            instituicao.textContent = name;
+        }
+
+        // Evento de envio do formulário de mensagem
+        messageForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            const message = messageContent.value.trim();
+            if (message !== '') {
+                addMessageToCarousel(message);
+                messageContent.value = '';
+            }
+        });
+
+        // Exemplo de mensagens cadastradas (pode ser substituído pela chamada a uma API)
+        const mensagensCadastradas = [
+            {% for mensagem in mensagens %}
+                '{{ mensagem.content }}',
+            {% endfor %}
+        ];
+
+        // Adicionar as mensagens cadastradas ao carrossel
+        mensagensCadastradas.forEach(function (mensagem) {
+            addMessageToCarousel(mensagem);
+        });
+
+        // Exemplo de nome da instituição (pode ser substituído pela chamada a uma API)
+        const nomeInstituicao = '{{ instituicao }}';
+        updateInstituicao(nomeInstituicao);
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+    @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+body {
+            background-image: url("https://static.vecteezy.com/ti/vetor-gratis/p3/2287393-conceito-de-viagem-fundo-nuvem-marco-mundo-vetor.jpg");
+            background-size : cover}
+   h1 {
+                text-align: center;
+              }
+
+
+label {
+	display: inline-block;
+	width: 120px;
+	font-weight: bold;
+}
+
+select {
+	padding: 5px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+}
+
+button[type=submit] {
+	display: block;
+	margin: 20px auto;
+	padding: 10px 20px;
+	border-radius: 5px;
+	border: none;
+	background-color: #007bff;
+	color: #fff;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+button[type=submit]:hover {
+	background-color: #0069d9;
+}

@@ -1,0 +1,97 @@
+{% extends 'baselogada.html' %}
+
+{% block body %}
+
+<html>
+  <head>
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+        *{
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: 'Poppins', sans-serif;
+        }
+
+      .cont {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+      label {
+        display: inline-block;
+        width: 100px;
+        margin-bottom: 10px;
+      }
+      input[type="text"], input[type="number"] {
+        width: 200px;
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin-bottom: 10px;
+      }
+      input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+      p {
+        color: green;
+        font-weight: bold;
+      }
+      h1{
+       display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom:-100px
+}
+
+p.success {
+color: green;
+font-weight: bold;
+}
+
+p.error {
+color: red;
+font-weight: bold;
+}
+    </style>
+     </head>
+      <h1>Cadastro de estoque</h1>
+     <div class="cad">
+
+
+  {% if sucesso == True %}
+<p>Produto cadastrado com sucesso!</p>
+{% elif sucesso == False %}
+<p>Ocorreu um erro ao cadastrar o produto.</p>
+{% endif %}
+
+<form action="{{ url_for('cadastro') }}" method="POST">
+  <label for="instituicao">Instituição:</label>
+  <input type="text" id="instituicao" name="instituicao" required><br><br>
+  <label for="doacao">Doação:</label>
+  <input type="text" id="doacao" name="doacao" required><br><br>
+  <label for="tipo">Tipo:</label>
+  <input type="text" id="tipo" name="tipo" required><br><br>
+  <label for="quantidade">Quantidade:</label>
+  <input type="number" id="quantidade" name="quantidade" required><br><br>
+  <input type="submit" value="Cadastrar">
+</form>
+       {% if sucesso == True %}
+            <p>Cadastro de estoque realizado com sucesso!</p>
+            {% elif sucesso == False %}
+            <p>Ocorreu um erro ao cadastrar o estoque.</p>
+            {% endif %}
+</div>
+{% endblock %}

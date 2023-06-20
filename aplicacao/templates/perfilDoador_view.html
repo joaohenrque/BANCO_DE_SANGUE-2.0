@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <link rel="stylesheet" href="{{ url_for('static', filename='perfilDoador_view.css') }}">
+
+<head>
+  <title>Perfil de Doador</title>
+
+</head>
+<body>
+  <h1>Perfil de Doador</h1>
+  <div class="profile-container">
+    <div class="profile-image">
+      <img src="{{ url_for('static', filename='UPLOAD_FOLDER/' + perfil.foto) }}" alt="Foto">
+    </div>
+    <div class="profile-details">
+      <p><strong>Nome:</strong> {{ perfil.nome }}</p>
+      <p><strong>Gênero:</strong> {{ perfil.genero }}</p>
+      <p><strong>Tipo Sanguíneo:</strong> {{ perfil.tipo_sanguineo }}</p>
+      <p><strong>Doa Sangue:</strong> {{ "Sim" if perfil.doa_sangue else "Não" }}</p>
+      <p><strong>Doa Medula:</strong> {{ "Sim" if perfil.doa_medula else "Não" }}</p>
+      <p><strong>Doa Leite Materno:</strong> {{ "Sim" if perfil.doa_leite_materno else "Não" }}</p>
+      <p><strong>CEP:</strong> {{ perfil.cep }}</p>
+      <p><strong>Logradouro:</strong> {{ perfil.logradouro }}</p>
+      <p><strong>Bairro:</strong> {{ perfil.bairro }}</p>
+      <p><strong>Cidade:</strong> {{ perfil.cidade }}</p>
+      <p><strong>Estado:</strong> {{ perfil.estado }}</p>
+      <p><strong>CPF:</strong> {{ perfil.cpf }}</p>
+      <p><strong>Data de Nascimento:</strong> {{ perfil.data_nascimento }}</p>
+    </div>
+  </div>
+  <div class="edit-link">
+    <a href="{{ url_for('editarPerfilDoador') }}"><img src="{{ url_for('static', filename='ferramenta-lapis.png') }}" alt="Editar"></a>
+  </div>
+</body>
+</html>

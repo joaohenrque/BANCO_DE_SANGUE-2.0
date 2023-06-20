@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='formulario.css') }}" />
+
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário de Aptidão para Doação de Medula Espinhal</title>
+</head>
+<body>
+
+
+    <h2>Perguntas:</h2>
+
+    <form action="/salvar_formulario2" method="POST">
+        <div>
+            <p>1. Você teve febre nos últimos 7 dias?</p>
+            <div>
+                <label>
+                    <input type="radio" name="pergunta1" value="Sim"> Sim
+                </label>
+                <label>
+                    <input type="radio" name="pergunta1" value="Não"> Não
+                </label>
+            </div>
+            <p class="observacao">Observação: Se você teve febre nos últimos 7 dias, aguarde até a completa recuperação para realizar a doação de sangue.</p>
+        </div>
+
+        <div>
+            <p>2. Nos últimos 12 meses, você viajou para algum país com alta incidência de malária?</p>
+            <div>
+                <label>
+                    <input type="radio" name="pergunta2" value="Sim"> Sim
+                </label>
+                <label>
+                    <input type="radio" name="pergunta2" value="Não"> Não
+                </label>
+            </div>
+            <p class="observacao">Observação: Se você viajou para algum país com alta incidência de malária nos últimos 12 meses, aguarde 1 ano após o retorno para realizar a doação de sangue.</p>
+        </div>
+
+        <div>
+            <p>3. Você já teve hepatite após os 11 anos de idade?</p>
+            <div>
+                <label>
+                    <input type="radio" name="pergunta3" value="Sim"> Sim
+                </label>
+                <label>
+                    <input type="radio" name="pergunta3" value="Não"> Não
+                </label>
+            </div>
+            <p class="observacao">Observação: Se você teve hepatite após os 11 anos de idade, não é elegível para realizar a doação de sangue.</p>
+        </div>
+
+        <div>
+            <p>4. Você já teve diagnóstico de sífilis?</p>
+            <div>
+                <label>
+                    <input type="radio" name="pergunta4" value="Sim"> Sim
+                </label>
+                <label>
+                    <input type="radio" name="pergunta4" value="Não"> Não
+                </label>
+            </div>
+            <p class="observacao">Observação: Se você teve diagnóstico de sífilis, não é elegível para realizar a doação de sangue.</p>
+        </div>
+
+        <div>
+            <p>5. Você já teve diagnóstico de HIV (AIDS)?</p>
+            <div>
+                <label>
+                    <input type="radio" name="pergunta5" value="Sim"> Sim
+                </label>
+                <label>
+                    <input type="radio" name="pergunta5" value="Não"> Não
+                </label>
+            </div>
+            <p class="observacao">Observação: Se você teve diagnóstico de HIV (AIDS), não é elegível para realizar a doação de sangue.</p>
+        </div>
+
+        <div>
+            <p>6. Você já fez uso de drogas ilícitas injetáveis?</p>
+            <div>
+                <label>
+                    <input type="radio" name="pergunta6" value="Sim"> Sim
+                </label>
+                <label>
+                    <input type="radio" name="pergunta6" value="Não"> Não
+                </label>
+            </div>
+            <p class="observacao">Observação: Se você fez uso de drogas ilícitas injetáveis, não é elegível para realizar a doação de sangue.</p>
+        </div>
+
+        <div>
+            <p>7. Você já teve diagnóstico de doença de Chagas?</p>
+            <div>
+                <label>
+                    <input type="radio" name="pergunta7" value="Sim"> Sim
+                </label>
+                <label>
+                    <input type="radio" name="pergunta7" value="Não"> Não
+                </label>
+            </div>
+            <p class="observacao">Observação: Se você teve diagnóstico de doença de Chagas, não é elegível para realizar a doação de sangue.</p>
+        </div>
+
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>

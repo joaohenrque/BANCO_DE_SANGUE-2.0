@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+      
+      <title>Listagem Gratuita</title>
+
+      <!-- Custom Css -->
+      <link rel="shortcut icon" type="image/png" href="../favicon.png" />
+      <link rel="stylesheet" href="listagrat.css">
+  </head>
+
+  <body>       
+
+    <div class="tabelagr">
+      <table>
+        <tr>
+          <th>Perfil</th>
+          <th>E-mail</th>
+          <th>PDF Entrevista</th>
+          <th>Situação</th>
+        </tr>
+        <tr>
+          <td><a href="pagina_perfil.html" style="color:white">Doador</a></td>
+          <td id="email_tabela">doador@gmail.com</td>
+          <td><input type="file" accept="application/pdf"></td>
+          <td>
+            <select>
+              <option>Aprovado</option>
+              <option>Reprovado</option>
+            </select>
+          </td>
+        </tr>
+      </table>
+      
+      <script>
+        // Acessa o valor do endereço de email no perfil
+        var email = document.getElementById("email_perfil").value;
+      
+        // Atualiza o campo de email na tabela
+        document.getElementById("email_tabela").innerHTML = email;
+      </script>
+    </div>
+
+  </body>
+
+</html>

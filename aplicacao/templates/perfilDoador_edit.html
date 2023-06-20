@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Editar Perfil de Doador</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='perfilDoador.css') }}">
+   <link rel="stylesheet" href="{{ url_for('static', filename='perfilDoador_edit.css') }}">
+   <link rel="stylesheet" href="{{ url_for('static', filename='perfilDoador_edit.js') }}">
+
+</head>
+<body>
+  <h1 style="color: #b30000; text-align: center;">Editar Perfil de Doador</h1>
+  <form id="perfilForm" method="POST" action="{{ url_for('editarPerfilDoador') }}" enctype="multipart/form-data" style="max-width: 400px; margin: 0 auto; background-color: #fff; padding: 20px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+    {{ form.hidden_tag() }}
+
+    <div class="circle" id="fotoCircle">Clique para inserir sua foto</div>
+    <input type="file" id="fotoInput" name="foto" style="display: none;">
+
+    {{ form.nome.label }} {{ form.nome }}
+    <br><br>
+
+    {{ form.genero.label }} {{ form.genero }}
+    <br><br>
+
+    {{ form.tipo_sanguineo.label }} {{ form.tipo_sanguineo }}
+    <br><br>
+
+    {{ form.doa_sangue.label }} {{ form.doa_sangue }}
+    <br>
+    {{ form.doa_medula.label }} {{ form.doa_medula }}
+    <br>
+    {{ form.doa_leite_materno.label }} {{ form.doa_leite_materno }}
+    <br><br>
+
+    {{ form.cep.label }} {{ form.cep }}
+    <br><br>
+
+    {{ form.logradouro.label }} {{ form.logradouro }}
+    <br><br>
+
+    {{ form.bairro.label }} {{ form.bairro }}
+    <br><br>
+
+    {{ form.cidade.label }} {{ form.cidade }}
+    <br><br>
+
+    {{ form.estado.label }} {{ form.estado }}
+    <br><br>
+
+    {{ form.cpf.label }} {{ form.cpf }}
+    <br><br>
+
+    {{ form.data_nascimento.label }} {{ form.data_nascimento }}
+    <br><br>
+
+    {{ form.submit }}
+  </form>
+
+</body>
+</html>

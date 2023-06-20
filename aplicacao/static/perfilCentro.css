@@ -1,0 +1,115 @@
+  <style>
+
+      @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background-color: #f7f7f7;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #b30000;
+      text-align: center;
+    }
+
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    form label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    form input[type="text"],
+    form input[type="file"],
+    form select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin-bottom: 10px;
+    }
+
+    form input[type="submit"] {
+      background-color: #b30000;
+      color: #fff;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .circle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .circle {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background-color: #ccc;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      cursor: pointer;
+      border: 2px solid #b30000;
+    }
+
+    .circle:before {
+      content: 'Insira aqui sua foto';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #333;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .line {
+      position: relative;
+      height: 2px;
+      background-color: #b30000;
+      margin: 20px 0;
+    }
+
+    .line:before,
+    .line:after {
+      content: '';
+      position: absolute;
+      top: -5px;
+      width: 10px;
+      height: 10px;
+      background-color: #b30000;
+      border-radius: 50%;
+    }
+
+    .line:before {
+      left: -10px;
+    }
+
+    .line:after {
+      right: -10px;
+    }
+
+  </style>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    /* Mobile devices */
+@media screen and (max-width: 480px) {
+  .wrapper {
+    max-width: 100%;
+    padding: 20px;
+    border-radius: 0;
+  }
+
+}
+
+/* Tablets and small laptops */
+@media screen and (min-width: 481px) and (max-width: 1024px) {
+  .wrapper {
+    max-width: 80%;
+  }
+}
+
+/* Larger screens */
+@media screen and (min-width: 1025px) {
+  .wrapper {
+    max-width: 50%;
+  }
+}
+
+    @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50px; /* Ajuste a altura da navbar */
+            background-color: #7c0a02;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Alinhar à esquerda e à direita */
+            padding: 8px;
+            height:100%;
+        }
+
+        .navbar-brand img {
+            display: block;
+            height: 70px; /* Ajuste a altura da imagem */
+            margin-top: 2.5px;
+        }
+
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 7px 10px;
+            position: relative;
+            background-color: #7c0a02;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+            border-radius: 10px;
+            border: 2px solid #fff;
+            display: flex;
+            align-items: center;
+            height: 100%; /* Centralizar a altura dos botões */
+            margin-left: 10px; /* Adicionar espaçamento entre os botões */
+        }
+
+        .navbar-nav a:hover {
+            background-color: #fff;
+            color: #7c0a02;
+            transform: scale(1.1);
+        }
+
+        .wave-animation {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wave-animation::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(to right, #7c0a02, #7c0a02, #9b111e, #c50532, #c50532, #9b111e, #7c0a02);
+            z-index: -1;
+            opacity: 0.8;
+            animation: wave 5s linear infinite;
+        }
+
+        @keyframes wave {
+            0% {
+                transform: translateX(0%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: #7c0a02;
+            transition: width 0.3s;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .navbar-nav li:hover .nav-link {
+            transition: color 0.3s;
+        }
+
+        .navbar-nav li:hover .nav-link::after {
+            transition: background-color 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="{{ url_for('static', filename='images/gota.png') }}" alt="..." height="50"> <!-- Ajuste a altura da imagem -->
+            </a>
+            <div class="navbar-nav">
+                <a class="nav-link" id="login-button" href="/login_doador">Login</a>
+                <a class="nav-link" href="/cadastrar_usuario">Cadastro</a>
+            </div>
+        </div>
+    </nav>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Adicionar a classe 'wave-animation' ao elemento com a classe 'navbar'
+            $('.navbar').addClass('wave-animation');
+        });
+    </script>
+</body>
+</html>

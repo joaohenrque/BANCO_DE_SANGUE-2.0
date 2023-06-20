@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exibir Mensagens</title>
+    <style>
+        .carousel {
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .carousel ul {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel li {
+            width: 100%;
+            height: 100%;
+            float: left;
+        }
+
+        .message {
+            background-color: #f2f2f2;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        body {
+            background-image: url('https://abcmais.net/wp-content/uploads/2021/08/onde-comar-sangue-em-sao-bernardo-do-campo-como.jpg');
+           background-size: cover;
+}
+    </style>
+</head>
+<body>
+    <h1>Exibir Mensagens</h1>
+    <div class="carousel">
+        <ul>
+            {% for mensagem in mensagens %}
+                <li>
+                    <div class="message">
+                        <strong>{{ mensagem.nome }}</strong><br>
+                        {{ mensagem.conteudo }}
+                        print('oi')
+
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+<script>
+    const carousel = document.querySelector('.carousel');
+    const messageList = document.querySelector('.carousel ul');
+    let messages = document.querySelectorAll('.carousel li');
+
+    const messageWidth = messages[0].offsetWidth;
+    let currentIndex = 0;
+
+    carousel.style.height = `${messages[0].offsetHeight}px`;
+    messageList.style.width = `${messageWidth * messages.length}px`;
+
+    setInterval(() => {
+        const newMessages = document.querySelectorAll('.carousel li');
+        if (newMessages.length > messages.length) {
+            messages.forEach((message) => {
+                messageList.appendChild(message.cloneNode(true));
+            });
+            messageList.style.width = `${messageWidth * newMessages.length}px`;
+            messages = newMessages;
+        }
+
+        currentIndex = (currentIndex + 1) % messages.length;
+        messageList.style.transform = `translateX(-${currentIndex * messageWidth}px)`;
+    }, 5000);
+</script>
+
+</body>
+</html>

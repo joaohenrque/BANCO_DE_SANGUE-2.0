@@ -1,0 +1,77 @@
+{% extends 'baselogada.html' %}
+
+{% block body %}
+    <html>
+        <head>
+            <title>Remoção de produto</title>
+            <style>
+
+                @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+                *{
+                  margin: 0;
+                  padding: 0;
+                  box-sizing: border-box;
+                  font-family: 'Poppins', sans-serif;
+                }
+
+                label {
+                    display: inline-block;
+                    width: 100px;
+                    margin-bottom: 10px;
+                }
+                input[type="text"], input[type="number"] {
+                    width: 200px;
+                    padding: 5px;
+                    border-radius: 5px;
+                    border: 1px solid #ccc;
+                    margin-bottom: 10px;
+                }
+                input[type="submit"] {
+                    background-color: #4CAF50;
+                    color: white;
+                    padding: 10px 20px;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+                input[type="submit"]:hover {
+                    background-color: #45a049;
+                }
+                p {
+                    color: green;
+                    font-weight: bold;
+                }
+                h1 {
+                    text-align: center;
+                }
+                .remov{
+                 display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+            </style>
+        </head>
+        <body>
+            <h1>Remoção de estoque</h1>
+            <div class="remov">
+
+
+            <form action="{{ url_for('remocao') }}" method="POST">
+                  <label for="instituicao">Instituição:</label>
+                <input type="text" id="instituicao" name="instituicao" required><br><br>
+                 <label for="doacao">Doação:</label>
+                 <input type="text" id="doacao" name="doacao" required><br><br>
+                <label for="tipo">Tipo:</label>
+                <input type="text" id="tipo" name="tipo" required><br><br>
+              <input type="submit" value="Remover">
+            </form>
+               </div>
+        {% if sucesso == True %}
+            <p>Estoque removido com sucesso!</p>
+            {% elif sucesso == False %}
+            <p>Ocorreu um erro ao remover o estoque.</p>
+            {% endif %}
+        </body>
+    </html>
+{% endblock %}

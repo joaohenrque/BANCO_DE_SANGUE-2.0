@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+  <script src="https://unpkg.com/screen-reader-js/dist/screen-reader.min.js"></script>
+  <title>Login</title>
+
+</head>
+<body>
+<div class="flash-messages">
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+          <div class="flash-message {{ message[1] }}">
+      {{ message[0] }}
+          </div>
+
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+</div>
+
+
+  <div class="wrapper">
+    <div class="title-text">
+      <div class="title login speak-on-hover">Login Doador</div>
+      <div class="title signup">Login</div>
+    </div>
+
+    <div class="form-container">
+      <div class="slide-controls">
+        <input type="radio" name="slide" id="login" checked>
+        <input type="radio" name="slide" id="signup">
+        <label for="login" class="slide login{% if current_page == 'doador' %} active{% endif %}">Doador</label>
+        <label for="signup" class="slide signup{% if current_page == 'centro' %} active{% endif %}">Centro Médico</label>
+        <div class="slider-tab"></div>
+      </div>
+      <div class="form-inner">
+        <form class="signup" id="form-centro" method="POST" action="{{ url_for('loginDoador') }}">
+          {{ form.csrf_token }}
+          <div class="field">
+            <input type="text" class="form-control" name="{{ form.usuario.name }}" required placeholder="Usuário" title="Usuário">
+          </div>
+          <div class="field">
+            <input type="password" class="form-control" name="{{ form.senha.name }}" required placeholder="Senha" title="Senha">
+          </div>
+          <div class="pass-link"><a href="../esqsenha/esqsenha.html" class="speak-on-hover">Esqueceu a senha?</a></div>
+          <div class="field btn">
+            <div class="btn-layer"></div>
+            {{ form.submit_entrar(class="speak-on-hover", value="Entrar", title="Entrar") }}
+          </div>
+          <div class="signup-link">Não tem cadastro? <a href="{{ url_for('cadastrar_usuario') }}" class="speak-on-hover">Cadastre-se!</a></div>
+        </form>
+      </div>
+    </div>
+  </div>
+  </div></div>
+</body>
+    <script>
+    function showFlashMessage(message, type) {
+      var flashMessages = document.querySelector('.flash-messages');
+      var flashMessage = document.createElement('div');
+      flashMessage.classList.add('flash-message');
+      flashMessage.classList.add(type);
+      flashMessage.textContent = message;
+      flashMessages.appendChild(flashMessage);
+
+      // Remover a mensagem após um determinado tempo
+      setTimeout(function() {
+        flashMessage.remove();
+      }, 5000); // Remove a mensagem após 5 segundos (5000 milissegundos)
+    }
+
+    // Recupere as mensagens flash geradas pelo Jinja2 e passe para o JavaScript
+    var messages = [
+      {% for message in messages %}
+        ["{{ message[0] }}", "{{ message[1] }}"],
+      {% endfor %}
+    ];
+
+    // Exiba as mensagens flash no front-end
+    for (var i = 0; i < messages.length; i++) {
+      showFlashMessage(messages[i][0], messages[i][1]);
+    }
+
+    // Remover mensagens flash após um determinado tempo
+    var flashMessages = document.querySelectorAll('.flash-message');
+    for (var i = 0; i < flashMessages.length; i++) {
+      var flashMessage = flashMessages[i];
+      setTimeout(function() {
+        flashMessage.remove();
+      }, 5000);
+    }
+  </script>
+
+</html>

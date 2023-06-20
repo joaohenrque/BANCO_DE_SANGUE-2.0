@@ -1,0 +1,18 @@
+<!-- adicionar_pergunta.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Adicionar Pergunta</title>
+</head>
+<body>
+    <h1>Adicionar Pergunta</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.pergunta.label }} {{ form.pergunta }}
+
+        <br>
+
+        {{ form.submit }}
+    </form>
+</body>
+</html>

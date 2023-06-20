@@ -1,0 +1,15 @@
+{% extends 'index.html' %}
+
+{% block products %}
+
+    {% for product in products %}
+
+
+              <a href="/buy/{{ product.id }}" class="btn btn-primary w-100"><i class="fas fa-shopping-cart mr-2"></i>
+                Assinar </a>
+
+
+    {% endfor %}
+
+
+{% endblock %}

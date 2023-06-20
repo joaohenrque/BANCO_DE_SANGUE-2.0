@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  
+    <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+       
+    <!-- Style -->
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='planoscentro.css') }}">
+    <!-- GOOGLE ADSENSE -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4729289402151385"
+     crossorigin="anonymous"></script>
+        <title>Seleção de Planos</title>
+    </head>
+
+    <body>
+       
+        <div class="wrappers">
+            <div class="wrapper1">
+
+            <div class="title-text1">
+                <div class="title login1">Gratuito</div>
+            </div>
+
+            <div class="form-container1">
+                <div class="slide-controls1">
+                <input type="radio" name="slide" id="login" checked>
+                <label for="login" class="slide login1"> Acesse até 5 perfis de doador </label>
+                </div>
+            </div>
+                            
+        
+            <form action="../login_centro" target="_blank" class="signup">
+                    <div class="field btn">
+                    <div class="btn-layer1"></div>
+                    <input type="submit" value="Assine Gratuitamente">
+                    </div>
+            </form>
+
+            </div>
+            
+            <div class="wrapper2">
+
+                <div class="title-text2">
+                <div class="title login2">Premium</div>
+                </div>
+    
+                <div class="form-container2">
+                <div class="slide-controls2">
+                    <input type="radio" name="slide" id="login" checked>
+                    <label for="login" class="slide login2">Tenha acesso à todos os perfis</label>
+                </div>
+                </div>
+                                
+        
+                <form action="/buy/1" target="_blank" class="signup">
+        
+                    <div class="field btn2">
+                        <div class="btn-layer2"></div>
+                        <input type="submit" value="Assine o Premium">
+                    </div>
+                </form>
+    
+            </div>
+        </div> 
+  
+    </body>
+
+</html>

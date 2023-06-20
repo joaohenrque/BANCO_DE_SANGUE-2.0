@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+  <title>Login</title>
+</head>
+<body>
+
+  <div class="wrapper">
+    <div class="title-text">
+      <div class="title login">Login Centro</div>
+      <div class="title signup">Login </div>
+    </div>
+    <div class="form-container">
+      <div class="slide-controls">
+        <input type="radio" name="slide" id="login" checked>
+        <input type="radio" name="slide" id="signup">
+       <label for="login" class="slide login{% if current_page == 'doador' %} active{% endif %}">Doador</label>
+      <label for="signup" class="slide signup{% if current_page == 'centro' %} active{% endif %}">Centro Médico</label>
+        <div class="slider-tab"></div>
+      </div>
+      <div class="form-inner">
+            <form class="signup" id="form-centro" method="POST" action="{{ url_for('login_centro') }}">
+
+          {{ form.csrf_token }}
+          <div class="field">
+            {{ form.usuario(class="form-control", placeholder="Usuario", required=true) }}
+          </div>
+          <div class="field">
+            {{ form.senha(class="form-control", placeholder="Senha", required=true) }}
+          </div>
+          <div class="pass-link"><a href="../esqsenha/esqsenha.html">Esqueceu a senha?</a></div>
+          <div class="field btn">
+            <div class="btn-layer"></div>
+            <input type="submit" value="Entrar">
+          </div>
+          <div class="signup-link">Não tem cadastro? <a href='{{ url_for("cadastrar_centro") }}'>Cadastre-se!</a></div>
+        </form>
+      </div>
+    </div>
+  </div>
+        </div></div>
+</body>
+</html>
+
+
+<script>
+  const loginRadio = document.getElementById('login');
+  const signupRadio = document.getElementById('signup');
+  const currentPath = window.location.pathname;
+
+  if (currentPath.includes('doador')) {
+    loginRadio.checked = true;
+  } else if (currentPath.includes('centro')) {
+    signupRadio.checked = true;
+  }
+
+  loginRadio.addEventListener('change', function() {
+    window.location.href = '{{ url_for("loginDoador") }}'; // Redireciona para a rota "loginDoador"
+  });
+
+  signupRadio.addEventListener('change', function() {
+    window.location.href = '{{ url_for("login_centro") }}'; // Redireciona para a rota "loginCentro"
+  });
+</script>
