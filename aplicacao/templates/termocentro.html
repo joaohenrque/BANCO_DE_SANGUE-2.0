@@ -32,11 +32,11 @@
               <li>Você é responsável por agendar, aplicar exames, atender e entregar os resultados aos usuários</li>
             </ul>
             <br>
-
-            <form action="#" class="signup">
-              <input type="checkbox" id="accept-terms" name="accept-terms" required>
-              <label for="accept-terms"><strong>Eu aceito os termos de uso</strong></label><br><br>
-              <input type="submit" value="Confirmar" formaction="cadastro">
+              <form action="/aceitarTermosCentro" method="post" class="signup">
+        <input type="hidden" name="user_id" value="{{ user_id }}">
+        <input type="checkbox" id="accept-terms" name="accept-terms" required>
+        <label for="accept-terms"><strong>Eu aceito os termos de uso</strong></label><br><br>
+        <input type="submit" value="Confirmar">
             </form>
 
           </div>

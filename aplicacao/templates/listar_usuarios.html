@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
-  <title>Usuários Cadastrados</title>
+  <title>Doadores Cadastrados</title>
 
   <style>
     * {
@@ -20,28 +20,33 @@
       justify-content: center;
       background: -webkit-linear-gradient(left, #fff5bd, #fff5bd, #fffdd3, #fffdd3);
       padding: 20px;
+      text-shadow: -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000;
     }
 
     h1 {
+      font-size: 3.2rem;
+      font-weight: bolder;
       text-align: center;
-      margin-bottom: 1em;
+      padding-bottom: 20px;
+      color: RGB(179, 0, 0);
+      margin-top: 15px;
     }
 
     table {
       width: 100%;
-      max-width: 600px;
       border-collapse: collapse;
       border-radius: 15px;
       border: 1px solid #fff;
       box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
       margin-bottom: 1em;
+      overflow-x: auto;
     }
 
     table th,
     table td {
       padding: .625em;
       text-align: left;
-      color: #7c0a02;
+      color: red;
     }
 
     table th {
@@ -59,7 +64,7 @@
     }
 
     table tr:nth-child(even) {
-      background: -webkit-linear-gradient(left, #7c0a02, #7c0a02, #9b111e, #c50532);
+      background: -webkit-linear-gradient(right, #7c0a02, #9b111e, #9b111e, #ff2744);
     }
 
     table td {
@@ -86,10 +91,42 @@
       border-radius: 50%;
       margin-right: 10px;
     }
+
+    #status-select {
+      margin-top: 1em;
+      padding: 0.5em;
+      border-radius: 5px;
+      border: none;
+      background-color: #f5f5f5;
+      color: #7c0a02;
+      width: 100%;
+      max-width: 200px;
+    }
+
+    /* Responsividade */
+    @media screen and (max-width: 768px) {
+      table {
+        font-size: 14px;
+      }
+
+      table th,
+      table td {
+        padding: .5em;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      .profile-image {
+        width: 25px;
+        height: 25px;
+      }
+    }
   </style>
 </head>
 <body>
-  <h1>Usuários Cadastrados</h1>
+  <h1>Doadores Cadastrados</h1>
 
   <div class="tabelagr">
     <table>
@@ -98,6 +135,7 @@
           <th></th>
           <th>Usuário</th>
           <th>E-mail</th>
+          <th></th><th></th>
           <th>PDF Entrevista</th>
           <th>Situação</th>
           <th></th>
@@ -119,30 +157,26 @@
           <td>{{ usuario.email }}</td>
           <td>{{ usuario.pdf_entrevista }}</td>
           <td>{{ usuario.situacao }}</td>
-           <td>
-  {% if usuario.pdf_entrevista %}
-    <a class="pdf-link" href="{{ url_for('mostrar_pdf', filename=usuario.pdf_entrevista) }}" target="_blank">
-      <img src="{{ url_for('static', filename='pdf_icon.png') }}" alt="PDF" class="pdf-icon">
-      Visualizar PDF
-    </a>
-  {% else %}
-    Nenhum PDF disponível
-  {% endif %}
-</td>
           <td>
-            <form action="{{ url_for('deletar_usuario', id=usuario.id) }}" method="POST">
-              <button type="submit" class="btn btn-danger">Deletar</button>
-            </form>
+            {% if usuario.pdf_entrevista %}
+            <a class="pdf-link" href="{{ url_for('mostrar_pdf', filename=usuario.pdf_entrevista) }}" target="_blank">
+              <img src="{{ url_for('static', filename='pdf_icon.png') }}" alt="PDF" class="pdf-icon">
+              Visualizar PDF
+            </a>
+            {% else %}
+            PDF INDISPONÍVEL
+            {% endif %}
+          </td>
+          <td>
+            <select id="status-select">
+              <option>Aprovado</option>
+              <option>Reprovado</option>
+            </select>
           </td>
         </tr>
         {% endfor %}
       </tbody>
     </table>
-
-    <select>
-      <option>Aprovado</option>
-      <option>Reprovado</option>
-    </select>
   </div>
 </body>
 </html>

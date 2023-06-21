@@ -9,18 +9,7 @@
 
 </head>
 <body>
-<div class="flash-messages">
-  {% with messages = get_flashed_messages() %}
-    {% if messages %}
-      {% for message in messages %}
-          <div class="flash-message {{ message[1] }}">
-      {{ message[0] }}
-          </div>
 
-      {% endfor %}
-    {% endif %}
-  {% endwith %}
-</div>
 
 
   <div class="wrapper">
@@ -59,6 +48,24 @@
   </div></div>
 </body>
     <script>
+       const loginRadio = document.getElementById('login');
+    const signupRadio = document.getElementById('signup');
+    const currentPath = window.location.pathname;
+
+    if (currentPath.includes('doador')) {
+      loginRadio.checked = true;
+    } else if (currentPath.includes('centro')) {
+      signupRadio.checked = true;
+    }
+
+    loginRadio.addEventListener('change', function() {
+      window.location.href = '{{ url_for("loginDoador") }}'; // Redireciona para a rota "loginDoador"
+    });
+
+    signupRadio.addEventListener('change', function() {
+      window.location.href = '{{ url_for("login_centro") }}'; // Redireciona para a rota "loginCentro"
+    });
+
     function showFlashMessage(message, type) {
       var flashMessages = document.querySelector('.flash-messages');
       var flashMessage = document.createElement('div');
@@ -70,7 +77,7 @@
       // Remover a mensagem após um determinado tempo
       setTimeout(function() {
         flashMessage.remove();
-      }, 5000); // Remove a mensagem após 5 segundos (5000 milissegundos)
+      }, 3000); // Remove a mensagem após 3 segundos (3000 milissegundos)
     }
 
     // Recupere as mensagens flash geradas pelo Jinja2 e passe para o JavaScript
@@ -91,7 +98,7 @@
       var flashMessage = flashMessages[i];
       setTimeout(function() {
         flashMessage.remove();
-      }, 5000);
+      }, 3000);
     }
   </script>
 

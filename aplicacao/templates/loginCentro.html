@@ -46,22 +46,58 @@
 </html>
 
 
-<script>
-  const loginRadio = document.getElementById('login');
-  const signupRadio = document.getElementById('signup');
-  const currentPath = window.location.pathname;
+  <script>
+       const loginRadio = document.getElementById('login');
+    const signupRadio = document.getElementById('signup');
+    const currentPath = window.location.pathname;
 
-  if (currentPath.includes('doador')) {
-    loginRadio.checked = true;
-  } else if (currentPath.includes('centro')) {
-    signupRadio.checked = true;
-  }
+    if (currentPath.includes('doador')) {
+      loginRadio.checked = true;
+    } else if (currentPath.includes('centro')) {
+      signupRadio.checked = true;
+    }
 
-  loginRadio.addEventListener('change', function() {
-    window.location.href = '{{ url_for("loginDoador") }}'; // Redireciona para a rota "loginDoador"
-  });
+    loginRadio.addEventListener('change', function() {
+      window.location.href = '{{ url_for("loginDoador") }}'; // Redireciona para a rota "loginDoador"
+    });
 
-  signupRadio.addEventListener('change', function() {
-    window.location.href = '{{ url_for("login_centro") }}'; // Redireciona para a rota "loginCentro"
-  });
-</script>
+    signupRadio.addEventListener('change', function() {
+      window.location.href = '{{ url_for("login_centro") }}'; // Redireciona para a rota "loginCentro"
+    });
+
+    function showFlashMessage(message, type) {
+      var flashMessages = document.querySelector('.flash-messages');
+      var flashMessage = document.createElement('div');
+      flashMessage.classList.add('flash-message');
+      flashMessage.classList.add(type);
+      flashMessage.textContent = message;
+      flashMessages.appendChild(flashMessage);
+
+      // Remover a mensagem após um determinado tempo
+      setTimeout(function() {
+        flashMessage.remove();
+      }, 3000); // Remove a mensagem após 3 segundos (5000 milissegundos)
+    }
+
+    // Recupere as mensagens flash geradas pelo Jinja2 e passe para o JavaScript
+    var messages = [
+      {% for message in messages %}
+        ["{{ message[0] }}", "{{ message[1] }}"],
+      {% endfor %}
+    ];
+
+    // Exiba as mensagens flash no front-end
+    for (var i = 0; i < messages.length; i++) {
+      showFlashMessage(messages[i][0], messages[i][1]);
+    }
+
+    // Remover mensagens flash após um determinado tempo
+    var flashMessages = document.querySelectorAll('.flash-message');
+    for (var i = 0; i < flashMessages.length; i++) {
+      var flashMessage = flashMessages[i];
+      setTimeout(function() {
+        flashMessage.remove();
+      }, 3000);
+    }
+  </script>
+</html>

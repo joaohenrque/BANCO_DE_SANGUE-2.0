@@ -1,14 +1,94 @@
 
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='formulario.css') }}" />
 
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background-color: #f7f7f7;
+      padding: 20px;
+      border-radius: 15px;
+    }
+
+    h1 {
+      color: #b30000;
+      font-family: 'Poppins', sans-serif;
+      font-size: 3.2rem;
+      text-align: center;
+      background: -webkit-linear-gradient(right, #7c0a02, #9b111e, #9b111e, #ff2744);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      padding: 10px 0;
+      margin-bottom: 20px;
+    }
+
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    form label {
+      font-family: 'Poppins', sans-serif;
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    form input[type="radio"] {
+      margin-right: 10px;
+    }
+
+    form button[type="submit"] {
+      background-color: #b30000;
+      color: #fff;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      float: right;
+      font-family: 'Poppins', sans-serif;
+      margin-top: 20px;
+    }
+
+    .title {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .observacao {
+      font-size: 12px;
+      margin-top: 5px;
+      color: #888;
+    }
+
+    .tile {
+      margin-bottom: 20px;
+    }
+  </style>
 </head>
+
 <body>
+  <h1>Formulário de Doação de Leite</h1>
+
  <form action="/salvar_formulario3" method="POST">
     <div class="tile is-parent">
         <div class="tile is-child box">
@@ -232,10 +312,6 @@
          </form>
 
 
-<p>Referências do Questionário:</p>
-<link rel="stylesheet"
-href="https://www.prosangue.sp.gov.br/artigos/requisitos_basicos_para_doacao.html">
-<link rel="stylesheet" href="https://www.prosangue.sp.gov.br/artigos/quem_nao_pode_doar.html">
 
 </body>
 </html>

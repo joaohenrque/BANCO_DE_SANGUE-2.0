@@ -1,6 +1,6 @@
 from werkzeug.utils import secure_filename
 import pdfkit
-
+from flask_login import current_user
 from aplicacao import app, database, bcrypt, login_manager
 from flask import send_from_directory,make_response, redirect, render_template, url_for, flash, request, session, get_flashed_messages
 from aplicacao.forms import FormLogin, FormCadastrarUsuario,FormCadastrarCentro,\
@@ -12,21 +12,17 @@ import requests
 # import API Mercado Pago
 import services
 from api_mercadopago import payment
-from flask import Flask, render_template, request, redirect
-import os
-import mercadopago
-from flask import Flask, render_template, request, redirect
 from flask_login import LoginManager, UserMixin, login_user, current_user, login_required
-
 import random
+from flask import render_template, request, redirect, url_for, send_from_directory
+import os
 
 
-from reportlab.lib.pagesizes import letter
-from reportlab.pdfgen import canvas
+
 @app.template_filter('length')
 def length_filter(seq):
     return len(seq)
-from flask import render_template, request, redirect, url_for
+
 
 
 @app.route('/cadastrar_mensagem', methods=['GET', 'POST'])
@@ -50,7 +46,7 @@ from flask import redirect, url_for, render_template
 from fpdf import FPDF
 
 app.config['PDF_FOLDER'] = '\\aplicacao\\PDF_FOLDER'
-import os
+
 
 # ...
 
@@ -58,15 +54,6 @@ pdf_folder = app.config['PDF_FOLDER']
 if not os.path.exists(pdf_folder):
     os.makedirs(pdf_folder)
 
-
-from fpdf import FPDF
-
-from fpdf import FPDF
-
-from fpdf import FPDF
-from flask import render_template, request, redirect, url_for, send_from_directory
-from fpdf import FPDF
-import os
 
 @app.route('/salvar_formulario3', methods=['POST'])
 @login_required
@@ -134,7 +121,7 @@ def salvar_formulario3():
     pdf_filename = f'formulario3_user_{user_id}.pdf'
     pdf.output(os.path.join(app.config['PDF_FOLDER'], pdf_filename), 'F')
 
-    return redirect(url_for('mostrar_pdf', filename=pdf_filename))
+    return redirect(url_for('index', filename=pdf_filename))
 
 
 @app.route('/pdf/<filename>')
@@ -177,9 +164,7 @@ def salvar_formulario2():
         'pergunta5': 'Apresenta atualmente algum desses quadros?',
         'pergunta6': 'Teve hepatite após os 11 anos de idade?',
         'pergunta7': 'Tem ou teve alguma doença transmissível por sangue?',
-        'pergunta8': 'Fez ou faz uso de drogas ilícitas injetáveis?',
-        'pergunta9': 'Tem ou teve Malária?',
-        'pergunta10': 'Tem ou teve Doença de Parkinson?'
+
     }
     formulario2 = Formulario2(user_id=user_id, pergunta1=pergunta1, pergunta2=pergunta2, pergunta3=pergunta3,
                             pergunta4=pergunta4,
@@ -209,7 +194,7 @@ def salvar_formulario2():
     pdf_filename = f'formulario3_user_{user_id}.pdf'
     pdf.output(os.path.join(app.config['PDF_FOLDER'], pdf_filename), 'F')
 
-    return redirect(url_for('mostrar_pdf', filename=pdf_filename))
+    return redirect(url_for('index', filename=pdf_filename))
 
 
 @app.route('/salvar_formulario', methods=['POST'])
@@ -239,7 +224,10 @@ def salvar_formulario():
         'pergunta7': 'Tem ou teve alguma doença transmissível por sangue?',
         'pergunta8': 'Fez ou faz uso de drogas ilícitas injetáveis?',
         'pergunta9': 'Tem ou teve Malária?',
-        'pergunta10': 'Tem ou teve Doença de Parkinson?'
+        'pergunta10': 'Tem ou teve Doença de Parkinson?',
+        'pergunta11': 'Tem ou teve Doença de Chagas?'
+
+
     }
 
     formulario = Formulario(user_id=user_id, pergunta1=pergunta1, pergunta2=pergunta2, pergunta3=pergunta3,
@@ -270,7 +258,7 @@ def salvar_formulario():
     pdf_filename = f'formulario3_user_{user_id}.pdf'
     pdf.output(os.path.join(app.config['PDF_FOLDER'], pdf_filename), 'F')
 
-    return redirect(url_for('mostrar_pdf', filename=pdf_filename))
+    return redirect(url_for('index', filename=pdf_filename))
 
 
 @app.route('/finalizar')
@@ -434,7 +422,7 @@ def perfilCentro():
     # Verificar se o usuário atual já possui um perfil de centro
     perfil_existente = PerfilCentro.query.filter_by(usuario_id=current_user.id).first()
     if perfil_existente:
-        return redirect('index2')
+        return redirect('/index2')
 
     form = PerfilCentroForm()
     if form.validate_on_submit():
@@ -453,10 +441,11 @@ def perfilCentro():
         # Preencher os campos de endereço automaticamente usando o CEP
         preencher_endereco_por_cep(cep, form)
 
-        filename = secure_filename(foto.filename)
+        filename = secure_filename(foto.filename) if foto else 'images/Capturar-fotor-bg-remover-2023061495012.png'
         upload_folder = os.path.join('aplicacao', 'static', 'UPLOAD_FOLDER')
 
-        foto.save(os.path.join(upload_folder, filename))
+        if foto:
+            foto.save(os.path.join(upload_folder, filename))
 
         perfil = PerfilCentro(usuario_id=current_user.id, instituicao=instituicao, taxas=taxas,
                               telefones=telefones, email=email, cep=cep, logradouro=logradouro,
@@ -465,7 +454,7 @@ def perfilCentro():
         database.session.add(perfil)
         database.session.commit()
 
-        return redirect('index2')
+        return redirect('/index2')
 
     return render_template('perfilCentro.html', form=form)
 
@@ -545,7 +534,7 @@ def loginDoador():
             if user and bcrypt.check_password_hash(user.senha, form.senha.data):
                 login_user(user, remember=form.lembrar.data)
                 flash(f'Login feito: {form.usuario.data}', 'alert alert-success')
-                return redirect('/aceitarTermosCentro')
+                return redirect('/aceitar_termos')
             else:
                 flash('Usuário ou senha incorretos', 'alert alert-danger')
         except SQLAlchemyError as e:
@@ -611,7 +600,7 @@ def cadastrar_usuario():
             database.session.add(user)
             database.session.commit()
             flash('Usuário cadastrado com sucesso', 'alert alert-success')
-            return redirect('/cadastrar_usuario')
+            return redirect('/login_doador')
         except SQLAlchemyError as e:
             database.session.rollback()
             flash('Ocorreu um erro ao cadastrar a instituição', 'alert alert-danger')
@@ -635,7 +624,7 @@ def cadastrar_centro():
             database.session.add(user)
             database.session.commit()
             flash('Instituição cadastrada com sucesso', 'alert alert-success')
-            return redirect('/cadastrar_centro')
+            return redirect('/login_centro')
         except SQLAlchemyError as e:
             database.session.rollback()
             flash('Ocorreu um erro ao cadastrar a instituição', 'alert alert-danger')
@@ -658,7 +647,13 @@ def termos():
     return render_template('termos.html')
 
 
-from flask_login import current_user
+
+@app.route("/index_home")
+def index_home():
+    return render_template('index_home.html')
+
+
+
 
 
 
@@ -680,7 +675,6 @@ def aceitarTermos():
     else:
         flash('Você precisa estar logado para aceitar os termos de uso.', 'alert alert-danger')
         return redirect(url_for('loginDoador'))
-
 @app.route('/aceitarTermosCentro', methods=['GET', 'POST'])
 def aceitarTermosCentro():
     if current_user.is_authenticated:  # Verifica se o usuário está autenticado
@@ -698,7 +692,8 @@ def aceitarTermosCentro():
             return render_template('termocentro.html')
     else:
         flash('Você precisa estar logado para aceitar os termos de uso.', 'alert alert-danger')
-        return redirect(url_for('loginCentro'))
+        return redirect(url_for('login_centro'))
+
 
 
 @app.route("/termo_doador")
@@ -750,105 +745,6 @@ def sair():
     return redirect(url_for('loginDoador'))
 
 
-@app.route('/cadastro_doacao', methods=['GET', 'POST'])
-def cadastro_doacao():
-    if request.method == 'POST':
-        instituicao = request.form['instituicao']
-        tipo = request.form['tipo']
-        quantidade = int(request.form['quantidade'])
-        doacao = request.form['doacao']
-        estoques = Estoques_(instituicao=instituicao,doacao=doacao, tipo=tipo, quantidade=quantidade)
-        database.session.add(estoques)
-        database.session.commit()
-        return render_template('cadastro.html', sucesso=True)
-    else:
-        return render_template('cadastro.html', sucesso=False)
-
-
-@app.route('/remocao', methods=['GET', 'POST'])
-def remocao():
-    if request.method == 'POST':
-        instituicao = request.form['instituicao']
-        doacao = request.form['doacao']
-        tipo = request.form['tipo']
-        estoques = Estoques_.query.filter_by(instituicao=instituicao,doacao=doacao,tipo=tipo).first()
-        if estoques:
-            database.session.delete(estoques)
-            database.session.commit()
-            return render_template('remocao.html', sucesso=True)
-        else:
-            return render_template('remocao.html', sucesso=False)
-    else:
-        return render_template('remocao.html', sucesso=None)
-
-
-@app.route('/adicionar', methods=['GET', 'POST'])
-def adicionar():
-    if request.method == 'POST':
-        instituicao = request.form['instituicao']
-        doacao = request.form['doacao']
-        quantidade = int(request.form['quantidade'])
-        tipo= request.form['tipo']
-        estoques = Estoques_(instituicao=instituicao,doacao=doacao, tipo=tipo, quantidade=quantidade)
-        if estoques:
-            estoques.quantidade += quantidade
-            database.session.commit()
-            return render_template('adicionar.html', sucesso=True)
-        else:
-            return render_template('adicionar.html', sucesso=False)
-    else:
-        return render_template('adicionar.html', sucesso=None)
-
-
-@app.route('/subtrair', methods=['GET', 'POST'])
-def subtrair():
-    if request.method == 'POST':
-        instituicao = request.form['instituicao']
-        quantidade = int(request.form['quantidade'])
-        tipo = request.form['tipo']
-        doacao = request.form['doacao']
-        estoques = Estoques_(instituicao=instituicao, doacao=doacao, tipo=tipo, quantidade=quantidade)
-        if estoques:
-            if estoques.quantidade >= quantidade:
-                estoques.quantidade -= quantidade
-                database.session.commit()
-                return render_template('subtrair.html', sucesso=True)
-            else:
-                return render_template('subtrair.html', sucesso=False)
-        else:
-            return render_template('subtrair.html', sucesso=None)
-    else:
-        return render_template('subtrair.html', sucesso=None)
-
-
-@app.route('/atualizacao', methods=['GET', 'POST'])
-def atualizacao():
-    if request.method == 'POST':
-        instituicao = request.form['instituicao']
-        tipo = request.form['tipo']
-        nova_quantidade = int(request.form['quantidade'])
-        doacao = request.form['doacao']
-
-        estoques = Estoques_.query.filter_by(instituicao=instituicao, doacao=doacao, tipo=tipo).first()
-
-        if estoques:
-            estoques.quantidade = nova_quantidade
-            database.session.commit()
-            return render_template('atualizacao.html', sucesso=True)
-        else:
-            return render_template('atualizacao.html', sucesso=False)
-    else:
-        return render_template('atualizacao.html', sucesso=None)
-
-@app.route('/lista_produtos')
-def listarP():
-    estoques = Estoques_.query.all()
-    return render_template('lista_produtos.html', estoques=estoques)
-
-@app.route('/gerencia_estoq')
-def gerencia_p():
-    estoques = Estoques_.query.all()
-    return render_template('gerenciar_estoque.html', estoques=estoques)
 
 
 @app.route('/formularios')

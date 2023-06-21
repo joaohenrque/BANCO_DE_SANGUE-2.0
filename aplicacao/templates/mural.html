@@ -16,6 +16,7 @@
           padding: 0;
           box-sizing: border-box;
           font-family: 'Poppins', sans-serif;
+color: #fff; /* Cor do texto */
         }
 
         body {
@@ -171,7 +172,7 @@
         }
 
         button[type="submit"]:hover {
-           background: -webkit-linear-gradient(left, #fff5bd, #fff5bd, #fffdd3, #fffdd3);
+           background: -webkit-linear-gradient(right, #fff5bd, #fff5bd, #fffdd3, #fffdd3);
         }
 
         .post-it-image {
@@ -217,7 +218,6 @@
         {% for postit in postits %}
         <div class="post-it">
             <div class="nomear">
-                <h2>{{ postit.usuario.usuario }}</h2>
             </div>
             <div class="post-it-content">
                 <img src="https://ambulatoriodagloria.com.br/img/doacoes.png" class="post-it-image" alt="Sobreposição de Imagem">

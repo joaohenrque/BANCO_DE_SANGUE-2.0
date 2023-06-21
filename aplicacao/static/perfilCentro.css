@@ -1,20 +1,23 @@
-  <style>
-
-      @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
-
-    *{
+<style>
+    * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       font-family: 'Poppins', sans-serif;
     }
+
     body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
       background-color: #f7f7f7;
       padding: 20px;
+      border-radius: 15px;
     }
 
     h1 {
       color: #b30000;
+      font-family: 'Poppins', sans-serif;
       text-align: center;
     }
 
@@ -28,6 +31,7 @@
     }
 
     form label {
+      font-family: 'Poppins', sans-serif;
       display: block;
       margin-bottom: 10px;
       font-weight: bold;
@@ -36,6 +40,7 @@
     form input[type="text"],
     form input[type="file"],
     form select {
+      font-family: 'Poppins', sans-serif;
       width: 100%;
       padding: 8px;
       border: 1px solid #ccc;
@@ -52,6 +57,8 @@
       border-radius: 4px;
       cursor: pointer;
       font-weight: bold;
+      margin-left: 90%;
+      font-family: 'Poppins', sans-serif;
     }
 
     .circle-container {
@@ -62,6 +69,7 @@
     }
 
     .circle {
+      justify-content: center;
       position: relative;
       width: 150px;
       height: 150px;
@@ -72,14 +80,9 @@
       background-repeat: no-repeat;
       cursor: pointer;
       border: 2px solid #b30000;
-    }
-
-    .circle:before {
-      content: 'Insira aqui sua foto';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
       color: #333;
       font-weight: bold;
@@ -111,5 +114,4 @@
     .line:after {
       right: -10px;
     }
-
   </style>

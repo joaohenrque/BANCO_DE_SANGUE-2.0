@@ -1,3 +1,14 @@
+ @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+        *{
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: 'Poppins', sans-serif;
+      font-size: .85em;
+
+        }
+
  /* Mobile devices */
 @media screen and (max-width: 480px) {
   .wrapper {
@@ -46,10 +57,16 @@ body {
 }
 
 h1 {
-  font-size: 24px;
-  color: #7c0c04;
-  margin-bottom: 20px;
-}
+            font-size: 3.2rem;
+
+            font-weight: bolder;
+            text-align: center;
+            padding-bottom: 20px;
+           color: -webkit-linear-gradient(right, #7c0a02, #9b111e, #9b111e, #ff2744);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-top: 15px;
+        }
 
 table {
   width: 100%;
@@ -77,6 +94,13 @@ table td {
 table tr:nth-child(even) {
   background-color: #c50532;
   color: #fff;
+  color: #fff; /* Cor do texto */
+            text-shadow: -1px -1px 0 #000,
+                          1px -1px 0 #000,
+                         -1px  1px 0 #000,
+                          1px  1px 0 #000;
+            font-weight: bold;
+            font-size: 1.2rem;
 }
 
 .btn {

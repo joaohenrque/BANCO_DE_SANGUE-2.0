@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-dg+RhmY6jXUyMjDTuEkJTFQc6KJrXZQgJAS/bPNX00bhnl9iKJFvWfZDXODAETmFS8qqQaEf9jvPEvy9OT0D2w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <style>
     /* Estilos CSS */
 
     @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 
     *{
+          font-size: 15px;
+
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       font-family: 'Poppins', sans-serif;
+
     }
 
     body {
@@ -187,6 +192,15 @@
       padding: 10px;
     }
 
+    @keyframes waveAnimation {
+      0% {
+        background-position: 0px;
+      }
+
+      100% {
+        background-position: 800px;
+      }
+    }
     .navbar a {
       color: white;
       text-decoration: none;
@@ -200,6 +214,10 @@
     .navbar a:hover {
       color: rgba(255, 255, 255, 0.7);
     }
+    .sair{color:white;
+    align:center
+          justify-content: center;
+}
 
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-dg+RhmY6jXUyMjDTuEkJTFQc6KJrXZQgJAS/bPNX00bhnl9iKJFvWfZDXODAETmFS8qqQaEf9jvPEvy9OT0D2w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -218,14 +236,20 @@
     </div>
     <ul>
       <li id="home">Home</li>
-      <li id="Mural">Mural</li>
-      <li id="Lista">Lista De Doadores</li>
+      <li id="postits">Mural</li>
+      <li id="Lista"> Doadores</li>
       <li id="perfilView">Perfil</li>
     </ul>
+    <p class="sair">Sair</p>
+<img src="{{ url_for('static', filename='img_72532.png') }}" height="30px" width="30px" alt="Sair" class="logout" onclick="handleLogout()">
   </div>
 
   <div class="content">
-    <div id="route-content"></div> <!-- Elemento onde a rota será renderizada -->
+    <div id="route-content">   {% include 'index_home.html' %}
+
+        {% block body %}
+    {% endblock %}
+    </div> <!-- Elemento onde a rota será renderizada -->
   </div>
 
   <script>
@@ -233,7 +257,7 @@
 
     // Obtém os elementos da barra lateral
     const homeElement = document.getElementById('home');
-    const muralElement = document.getElementById('Mural');
+    const postitsElement = document.getElementById('postits');
     const ListaElement = document.getElementById('Lista');
     const perfilViewElement = document.getElementById('perfilView');
     const routeContentElement = document.getElementById('route-content'); // Elemento para renderizar a rota
@@ -246,18 +270,31 @@
           routeContentElement.innerHTML = data;
         });
     }
+  homeElement.addEventListener('click', function() {
+      loadRoute('/index_home');
+    });
 
-    muralElement.addEventListener('click', function() {
+   postitsElement.addEventListener('click', function() {
       loadRoute('/postits');
     });
 
-   ListaElement.addEventListener('click', function() {
+    ListaElement.addEventListener('click', function() {
       loadRoute('/usuarios');
     });
 
     perfilViewElement.addEventListener('click', function() {
       loadRoute('/perfilCentro/view');
     });
+    const logoutElements = document.getElementsByClassName('logout');
+
+function handleLogout() {
+  window.location.href = '/sair'; // Redireciona o usuário para a página de logout
+}
+
+Array.from(logoutElements).forEach(element => {
+  element.addEventListener('click', handleLogout);
+});
+
   </script>
 </body>
 </html>

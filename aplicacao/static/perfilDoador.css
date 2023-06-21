@@ -31,6 +31,17 @@
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
+h1 {
+            font-size: 3.2rem;
+
+            font-weight: bolder;
+            text-align: center;
+            padding-bottom: 20px;
+           background: -webkit-linear-gradient(right, #7c0a02, #9b111e, #9b111e, #ff2744);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-top: 15px;
+        }
     form label {
       display: block;
       margin-bottom: 10px;

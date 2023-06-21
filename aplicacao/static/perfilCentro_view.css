@@ -1,7 +1,5 @@
-  <style>
-    /* Estilos CSS para o perfil */
 
-        @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+   @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 
     *{
       margin: 0;
@@ -14,10 +12,17 @@
       background-color: #f7f7f7;
     }
 
-    h1 {
-      text-align: center;
-      margin-top: 20px;
-    }
+h1 {
+  font-size: 3.2rem;
+  font-weight: bolder;
+  text-align: center;
+  padding-bottom: 20px;
+  background: linear-gradient(to right, #7c0a02, #9b111e, #9b111e, #ff2744);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 15px;
+}
+
 
     .profile-container {
       display: flex;
@@ -73,4 +78,3 @@
       height: 24px;
       cursor: pointer;
     }
-  </style>

@@ -1,6 +1,6 @@
 from aplicacao import app, database, bcrypt
 from aplicacao.models import Usuario,Estoques_,PostIts,Centro,PerfilDoadores,Respostas,Perguntas,\
-    PerfilCentro,Formulario,Mensagem,TermosUso
+    PerfilCentro,Formulario,Mensagem,TermosUso,Centro
 
 
 

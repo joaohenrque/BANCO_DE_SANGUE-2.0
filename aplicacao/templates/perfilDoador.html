@@ -2,20 +2,13 @@
 <html>
 <head>
   <title>Formulário de Perfil de Doador</title>
-    {% with messages = get_flashed_messages() %}
-  {% if messages %}
-    <div class="flash-messages">
-      {% for message in messages %}
-        <div class="flash-message">{{ message }}</div>
-      {% endfor %}
-    </div>
-  {% endif %}
-{% endwith %}
+
     <style>
      @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
     .line{
         font-family: 'Poppins', sans-serif;
     }
+
 </style>
   <link rel="stylesheet" href="{{ url_for('static', filename='perfilDoador.css') }}">
 
@@ -27,7 +20,7 @@
 
     <div class="circle-container">
       <div class="circle" id="fotoCircle">
-        Insira aqui sua foto
+        Insira sua foto
       </div>
     </div>
     <input type="file" id="fotoInput" name="foto" style="display: none;">

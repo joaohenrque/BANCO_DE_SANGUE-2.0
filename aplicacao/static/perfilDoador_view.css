@@ -15,8 +15,15 @@
     }
 
     h1 {
-      text-align: center;
-      margin-top: 20px;
+     font-size: 3.2rem;
+
+            font-weight: bolder;
+            text-align: center;
+            padding-bottom: 20px;
+           background: -webkit-linear-gradient(right, #7c0a02, #9b111e, #9b111e, #ff2744);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-top: 15px;
     }
 
     .profile-container {

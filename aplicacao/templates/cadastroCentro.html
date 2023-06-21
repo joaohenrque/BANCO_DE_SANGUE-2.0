@@ -1,12 +1,14 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='cadastro.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='cadastro.js') }}">
 <div class="flash-messages">
-  {% with messages = get_flashed_messages() %}
+   {% with messages = get_flashed_messages() %}
     {% if messages %}
       {% for message in messages %}
-        <div class="flash-message {{ message[1] }}">
-          {{ message[0] }}
-        </div>
+          <div class="flash-message {{ message[1] }}">
+
+      {{ message[10] }}
+          </div>
+
       {% endfor %}
     {% endif %}
   {% endwith %}

@@ -1,150 +1,292 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='formulario.css') }}" />
 
 <head>
-    <meta charset="UTF-8">
-    <title>Formulário de Aptidão para Doação de Sangue</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background-color: #f7f7f7;
+      padding: 20px;
+      border-radius: 15px;
+    }
+
+    h1 {
+      color: #b30000;
+      font-family: 'Poppins', sans-serif;
+      font-size: 3.2rem;
+      text-align: center;
+      background: -webkit-linear-gradient(right, #7c0a02, #9b111e, #9b111e, #ff2744);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      padding: 10px 0;
+      margin-bottom: 20px;
+    }
+
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    form label {
+      font-family: 'Poppins', sans-serif;
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    form input[type="radio"] {
+      margin-right: 10px;
+    }
+
+    form button[type="submit"] {
+      background-color: #b30000;
+      color: #fff;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      float: right;
+      font-family: 'Poppins', sans-serif;
+      margin-top: 20px;
+    }
+
+    .title {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .observacao {
+      font-size: 12px;
+      margin-top: 5px;
+      color: #888;
+    }
+
+    .tile {
+      margin-bottom: 20px;
+    }
+  </style>
 </head>
+
 <body>
+  <h1>Formulário de Doação de Sangue</h1>
 
-    <h2>Perguntas:</h2>
-
-    <form action="/salvar_formulario" method="POST">
-        <div>
-            <p>1. Sua saúde está boa esse mês?</p>
-            <div>
-                <label>
-                    <input type="radio" name="pergunta1" value="Sim"> Sim
-                </label>
-                <label>
-                    <input type="radio" name="pergunta1" value="Não"> Não
-                </label>
-            </div>
+  <form action="/salvar_formulario3" method="POST">
+    <div class="tile is-parent">
+      <div class="tile is-child box">
+        <p class="title">1. Foi submetido a transplante de órgãos ou de medula? *</p>
+        <div class="control">
+          <label class="radio">
+            <input type="radio" name="pergunta1" value="Sim"> Sim
+          </label>
+          <label class="radio">
+            <input type="radio" name="pergunta1" value="Não"> Não
+          </label>
         </div>
+        <p class="observacao">Observação: Se você foi submetido a transplante de órgãos ou medula, é recomendável aguardar um período de tempo antes de realizar a doação de sangue.</p>
+      </div>
+    </div>
 
-        <div>
-            <p>2. Você tem entre 16 e 69 anos?</p>
-            <div>
-                <label>
-                    <input type="radio" name="pergunta2" value="Sim"> Sim
-                </label>
-                <label>
-                    <input type="radio" name="pergunta2" value="Não"> Não
-                </label>
-            </div>
+    <div class="tile is-parent">
+      <div class="tile is-child box">
+        <p class="title">2. Possui diagnóstico de hepatite após os 11 anos de idade? *</p>
+        <div class="control">
+          <label class="radio">
+            <input type="radio" name="pergunta2" value="Sim"> Sim
+          </label>
+          <label class="radio">
+            <input type="radio" name="pergunta2" value="Não"> Não
+          </label>
         </div>
+        <p class="observacao">Observação: A hepatite viral após os 11 anos de idade impede a doação de sangue.</p>
+      </div>
+    </div>
 
-        <div>
-            <p>3. Você pesa no mínimo 50kg?</p>
-            <div>
-                <label>
-                    <input type="radio" name="pergunta3" value="Sim"> Sim
-                </label>
-                <label>
-                    <input type="radio" name="pergunta3" value="Não"> Não
-                </label>
-            </div>
+    <div class="tile is-parent">
+      <div class="tile is-child box">
+        <p class="title">3. Esteve exposto(a) à situação de risco para o HIV? *</p>
+        <div class="control">
+          <label class="radio">
+            <input type="radio" name="pergunta3" value="Sim"> Sim
+          </label>
+          <label class="radio">
+            <input type="radio" name="pergunta3" value="Não"> Não
+          </label>
         </div>
+        <p class="observacao">Observação: Situações de risco para o HIV incluem relação sexual sem proteção ou compartilhamento de agulhas.</p>
+      </div>
+    </div>
 
-        <div>
-            <p>4. Dormiu por pelo menos 6 horas essa noite?</p>
-            <div>
-                <label>
-                    <input type="radio" name="pergunta4" value="Sim"> Sim
-                </label>
-                <label>
-                    <input type="radio" name="pergunta4" value="Não"> Não
-                </label>
-            </div>
+    <div class="tile is-parent">
+      <div class="tile is-child box">
+        <p class="title">4. Teve contato com pessoas com diagnóstico de hepatite nos últimos 12 meses? *</p>
+
+
+<div class="control">
+        <label class="radio">
+          <input type="radio" name="pergunta4" value="Sim"> Sim
+        </label>
+        <label class="radio">
+          <input type="radio" name="pergunta4" value="Não"> Não
+        </label>
         </div>
+        <p class="observacao">Observação: Se você teve algum desses quadros mencionados, é considerado um impedimento definitivo para a doação de sangue.</p>
+    </div>
+    </div>
 
-        <div>
-            <p>5. Você se alimentou antes de doar sangue?</p>
-            <div>
-                <label>
-                    <input type="radio" name="pergunta5" value="Sim"> Sim
-                </label>
-                <label>
-                    <input type="radio" name="pergunta5" value="Não"> Não
-                </label>
-            </div>
+    <div class="tile is-parent">
+        <div class="tile is-child box">
+       <p class="title">5. Apresenta atualmente algum desses quadros?
+        *
+        HIV Positivo
+        Doença de Chagas.
+
+        » tem graves problemas no pulmão, coração, rins ou fígado.
+
+        » tem problema de coagulação de sangue.
+
+        » tem alguma doença que gere inimputabilidade jurídica.
+
+        » tem Mal de Parkinson.
+        Se sim: Impedimento Definitivo</p>
+
+
+<div class="control">
+        <label class="radio">
+          <input type="radio" name="pergunta5" value="Sim"> Sim
+        </label>
+        <label class="radio">
+          <input type="radio" name="pergunta5" value="Não"> Não
+        </label>
         </div>
+        <p class="observacao">Observação: Se você apresenta algum desses quadros mencionados ou condições específicas, é considerado um impedimento definitivo para a doação de sangue.</p>
+    </div>
+    </div>
 
-        <div>
-            <p>6. Evitou comida gordurosa nas últimas 24 horas?</p>
-            <div>
-                <label>
-                    <input type="radio" name="pergunta6" value="Sim"> Sim
-                </label>
-                <label>
-                    <input type="radio" name="pergunta6" value="Não"> Não
-                </label>
-            </div>
+    <div class="tile is-parent">
+        <div class="tile is-child box">
+       <p class="title">6. Teve hepatite após os 11 anos de idade?
+        *
+        Hepatite após o 11º aniversário:  Impedimento Definitivo
+        Hepatite B ou C após ou antes dos 10 anos:  Impedimento Definitivo
+        Se teve Hepatite por Medicamento pode estar apto após a cura completa e
+        após liberação médica através de avaliação clínica comprovada.</p>
+
+
+<div class="control">
+        <label class="radio">
+          <input type="radio" name="pergunta6" value="Sim"> Sim
+        </label>
+        <label class="radio">
+          <input type="radio" name="pergunta6" value="Não"> Não
+        </label>
         </div>
+        <p class="observacao">Observação: Se você teve hepatite após os 11 anos de idade, ou hepatite B ou C após ou antes dos 10 anos, é considerado um impedimento definitivo para a doação de sangue. No entanto, se teve hepatite por medicamento e está curado, pode ser elegível após avaliação médica.</p>
+    </div>
+    </div>
 
-        <div>
-            <p>7. Está portando documento original e oficial com foto recente/atualizada?</p>
-            <div>
-                <label>
-                    <input type="radio" name="pergunta7" value="Sim"> Sim
-                </label>
-                <label>
-                    <input type="radio" name="pergunta7" value="Não"> Não
-                </label>
-            </div>
-        </div>
+    <div class="tile is-parent">
+    <div class="tile is-child box">
+        <p class="title">7. Tem ou teve alguma doença transmissível por sangue?
+            *
+            Hepatites B e C,
+            AIDS (vírus HIV),
+            Doenças associadas aos vírus HTLV I e II
+            Doença de Chagas.
+            Impedimento Definitivo</p>
 
-        <div>
-            <p>8. Para mulheres: Está há pelo menos 90 dias sem doar sangue?</p>
-            <div>
-                <label>
-                    <input type="radio" name="pergunta8" value="Sim"> Sim
-                </label>
-                <label>
-                    <input type="radio" name="pergunta8" value="Não"> Não
-                </label>
-            </div>
-        </div>
 
-        <div>
-            <p>9. Para mulheres: Você já excedeu o limite de quatro doações de sangue nos últimos 3 meses?</p>
-            <div>
-                <label>
-                    <input type="radio" name="pergunta9" value="Sim"> Sim
-                </label>
-                <label>
-                    <input type="radio" name="pergunta9" value="Não"> Não
-                </label>
-            </div>
-        </div>
+<div class="control">
+<label class="radio">
+<input type="radio" name="pergunta7" value="Sim"> Sim
+</label>
+<label class="radio">
+<input type="radio" name="pergunta7" value="Não"> Não
+</label>
+</div>
+<p class="observacao">Observação: Se você tem ou teve alguma doença transmissível pelo sangue, como hepatites B e C, AIDS, doenças associadas aos vírus HTLV I e II ou doença de Chagas, é considerado um impedimento definitivo para a doação de sangue.</p>
+</div>
+</div>
 
-        <div>
-            <p>10. Para homens: Está há pelo menos 60 dias sem doar sangue?</p>
-            <div>
-                <label>
-                    <input type="radio" name="pergunta10" value="Sim"> Sim
-                </label>
-                <label>
-                    <input type="radio" name="pergunta10" value="Não"> Não
-                </label>
-            </div>
-        </div>
+<div class="tile is-parent">
+    <div class="tile is-child box">
+   <p class="title">8. Fez ou faz uso de drogas ilícitas injetáveis?
+    *
+    Impedimento Definitivo</p>
 
-        <div>
-            <p>11. Para homens: Você já excedeu o limite de quatro doações de sangue nos últimos 3 meses?</p>
-            <div>
-                <label>
-                    <input type="radio" name="pergunta11" value="Sim"> Sim
-                </label>
-                <label>
-                    <input type="radio" name="pergunta11" value="Não"> Não
-                </label>
-            </div>
-        </div>
 
-        <button type="submit">Enviar</button>
-    </form>
+<div class="control">
+    <label class="radio">
+      <input type="radio" name="pergunta8" value="Sim"> Sim
+    </label>
+    <label class="radio">
+      <input type="radio" name="pergunta8" value="Não"> Não
+    </label>
+</div>
+<p class="observacao">Observação: Se você fez ou faz uso de drogas ilícitas injetáveis, é considerado um impedimento definitivo para a doação de sangue.</p>
+</div>
+</div>
+
+<div class="tile is-parent">
+    <div class="tile is-child box">
+   <p class="title">9. Tem ou teve Malária?
+    *
+    Impedimento Definitivo</p>
+
+
+<div class="control">
+    <label class="radio">
+      <input type="radio" name="pergunta9" value="Sim"> Sim
+    </label>
+    <label class="radio">
+      <input type="radio" name="pergunta9" value="Não"> Não
+    </label>
+</div>
+<p class="observacao">Observação: Se você tem ou teve malária, é considerado um impedimento definitivo para a doação de sangue.</p>
+</div>
+</div>
+
+<div class="tile is-parent">
+    <div class="tile is-child box">
+   <p class="title">10. Tem ou teve Doença de Parkinson?
+    *
+    Impedimento Definitivo</p>
+
+
+<div class="control">
+    <label class="radio">
+      <input type="radio" name="pergunta10" value="Sim"> Sim
+    </label>
+    <label class="radio">
+      <input type="radio" name="pergunta10" value="Não"> Não
+    </label>
+</div>
+<p class="observacao">Observação: Se você tem ou teve doença de Parkinson, é considerado um impedimento definitivo para a doação de sangue.</p>
+</div>
+</div>
+             <button type="submit">Enviar</button>
+
+         </form>
+
+
+
+
 </body>
 </html>
